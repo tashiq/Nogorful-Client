@@ -2,7 +2,6 @@ import { Button, CircularProgress, Container, FormControl, InputLabel, MenuItem,
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import moment from 'moment';
 
 
 const UpdateStudent = () => {
@@ -51,7 +50,9 @@ const UpdateStudent = () => {
         console.log(prevInfo);
         axios.put(`http://localhost:4000/students/${id}`, prevInfo)
             .then(response => {
-                console.log(response.data);
+                if (response.data.affectedRows) {
+                    alert("Update Operation Successful");
+                }
             })
         e.preventDefault();
     }
