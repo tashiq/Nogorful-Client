@@ -16,7 +16,7 @@ const Events = () => {
 
             <Grid container spacing={2}>
                 {
-                    events.map(event => <Event key={event._id} data={event}></Event>)
+                    events?.map(event => <Event key={event._id} data={event}></Event>)
                 }
             </Grid>
         </Container>

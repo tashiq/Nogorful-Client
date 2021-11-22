@@ -16,9 +16,7 @@ const Branches = () => {
         <Container id="branches">
             <Typography variant="h4" sx={{ fontWeight: 600, my: 3, color: '#363d6b' }}>Branches</Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} style={{}}>
-                {
-                    branches.map(branch => <Branch key={branch._id} info={branch}></Branch>)
-                }
+
             </Grid>
         </Container>
 

@@ -15,7 +15,7 @@ const Teachers = () => {
 
             <Grid container spacing={2}>
                 {
-                    teachers.map(teacher => <Teacher key={teacher._id} data={teacher}></Teacher>)
+                    teachers?.map(teacher => <Teacher key={teacher._id} data={teacher}></Teacher>)
                 }
             </Grid>
         </Container>
