@@ -10,8 +10,10 @@ import SignIn from './Pages/SignIn/SignIn';
 import Teachers from './Pages/Teachers/Teachers';
 import Students from './Pages/Students/Students';
 import Student from './Pages/Student/Student';
+import Teacher from './Pages/Teacher/Teacher'
 import AddStudent from './Pages/Add/AddStudent/AddStudent'
 import UpdateStudent from './Pages/Update/UpdateStudent/UpdateStudent'
+import AddTeacher from './Pages/Add/AddTeacher/AddTeacher';
 function App() {
   return (
     <AuthProvider>
@@ -23,10 +25,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/teachers" element={<Teachers />} />
-          <Route path="/students/:id" element={<Student />} />
           <Route path="/students" element={<Students />} />
+          <Route path="/students/:id" element={<Student />} />
+          <Route path="/teachers/:id" element={<Teacher />} />
           <Route path="/update/student/:id" element={<UpdateStudent />} />
           <Route path="/add/student" element={<AddStudent />} />
+          <Route path="/add/teacher" element={<AddTeacher />} />
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
