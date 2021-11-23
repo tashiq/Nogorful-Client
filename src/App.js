@@ -9,6 +9,9 @@ import Login from './Pages/Login/Login';
 import SignIn from './Pages/SignIn/SignIn';
 import Teachers from './Pages/Teachers/Teachers';
 import Students from './Pages/Students/Students';
+import Student from './Pages/Student/Student';
+import AddStudent from './Pages/Add/AddStudent/AddStudent'
+import UpdateStudent from './Pages/Update/UpdateStudent/UpdateStudent'
 function App() {
   return (
     <AuthProvider>
@@ -16,12 +19,14 @@ function App() {
         <Navigation></Navigation>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="teachers" element={<Teachers />} />
-          <Route path="students" element={<Students />} />
-
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/students/:id" element={<Student />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/update/student/:id" element={<UpdateStudent />} />
+          <Route path="/add/student" element={<AddStudent />} />
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

@@ -1,38 +1,23 @@
 import { Button, CircularProgress, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 const UpdateStudent = () => {
     // const [gender, setGender] = useState('');
     const [prevInfo, setPrevInfo] = useState({});
-    // const { id } = useParams();
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     // get a student by that id.
-    const id = 3;
+
     useEffect(() => {
-        axios.get(`http://localhost:4000/students/${id}`)
-            .then(response => {
-                const data = response.data;
-                const date = data.addmission;
-                const str = date.slice(0, 10);
-                data.addmission = str;
-                setPrevInfo(data);
-
-
-                // if (response.data[0].addmission) {
-                //     const newInfo = { ...prevInfo };
-                //     if (prevInfo.addmission) {
-                //         const date = prevInfo.addmission;
-                //         newInfo.addmission = date.slice(0, 10);
-                //         setPrevInfo(newInfo);
-                //     }
-                //     // newInfo.addmission = date.slice(0, 10);
-                //     // setPrevInfo(newInfo)
-                // }
-            })
+        fetch(`http://localhost:4000/students/${id}`)
+            .then(response => response.json())
+            .then(data => setPrevInfo(data))
     }, []);
+    console.log(prevInfo);
     const handleUpdateStuBlur = e => {
         const type = e.target.name;
         const value = e.target.value;
@@ -45,6 +30,7 @@ const UpdateStudent = () => {
             .then(response => {
                 if (response.data.affectedRows) {
                     alert("Update Operation Successful");
+                    navigate('/students/' + id)
                 }
             })
         e.preventDefault();
@@ -60,7 +46,7 @@ const UpdateStudent = () => {
                     <TextField defaultValue={prevInfo.name} required name="name" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Name" variant="outlined" />
                     <TextField defaultValue={prevInfo.father} required name="father" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Father's Name" variant="outlined" />
                     <TextField defaultValue={prevInfo.mother} required name="mother" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Mother's Name" variant="outlined" />
-                    <TextField value={prevInfo.addmission} required
+                    <TextField value={prevInfo.addmission.slice(0, 10)} required
                         id="date"
                         label="Addmission Date"
                         name="addmission"

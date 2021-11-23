@@ -1,8 +1,10 @@
 import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 const AddStudent = () => {
-    const [addStuData, setAddStuData] = useState({ gender: 'male', img: '', parentsJob: '', branch: 'Sholoshahar' });
+    const [addStuData, setAddStuData] = useState({ gender: 'male', img: '', parentsOccupation: '', branch: 'Sholoshahar' });
+    const navigate = useNavigate()
     const handleAddStuBlur = e => {
         const type = e.target.name;
         console.log(addStuData);
@@ -21,10 +23,10 @@ const AddStudent = () => {
                 }
                 else if (response.data.insertId) {
                     alert('Insertion Successful');
-                    setAddStuData({ gender: 'male', img: '', parentsJob: '', branch: 'Sholoshahar' });
+                    navigate('/students')
+
                 }
             })
-        e.target.reset();
         e.preventDefault();
     }
     return (

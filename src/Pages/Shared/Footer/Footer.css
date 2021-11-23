@@ -1,6 +1,7 @@
 .footer{
     min-height: 50vh;
-    width: 98vw;
+    /* width: 98vw; */
+    width: 100%;
     background-color: rgba(33, 35, 36, 0.938);
     background-image: url('https://thumbs.dreamstime.com/b/dotted-background-vector-pattern-halftone-effect-circle-dots-isolated-white-133803483.jpg');
     background-blend-mode: darken;

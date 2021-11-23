@@ -1,31 +1,71 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import React, { useEffect, useState } from 'react';
+import logo from '../../images/banner.png'
+import { useParams } from 'react-router';
+import './Student.css'
+import axios from 'axios';
+import clipart from '../../images/clipart.png'
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid } from '@mui/material';
-const Student = ({ data }) => {
+import Button from '@mui/material/Button';
+import { Link, useNavigate } from 'react-router-dom'
+const Student = () => {
+    const { id } = useParams();
+    const [student, setStudent] = useState({})
+    const navigate = useNavigate()
+    useEffect(() => {
+        axios.get(`http://localhost:4000/students/${id}`)
+            .then(response => setStudent(response.data))
+            .catch(err => alert(err))
+
+    }, [id])
+    const handleStudentDelete = () => {
+        fetch(`http://localhost:4000/students/${id}`, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(data => {
+                if (data.affectedRows) {
+                    navigate('/students');
+                }
+            })
+    }
     return (
-        <Grid item xs={6} md={4}>
-            <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        image={data.img}
-                        alt={data.name}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {data.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {data.mail}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Grid>
+        <div>
+
+            {
+                student.name &&
+                <div id="stu-profile">
+                    <Typography variant="h4" style={{ display: 'inline-block', color: '', backgroundColor: 'white', padding: '10px 20px', borderRadius: '20px' }}>Student Profile</Typography>
+                    <div className="main-profile">
+                        <div className="profile-img">
+                            <img src={student.img ? student.img : clipart} alt={student.name} />
+                        </div>
+                        <div className="profile-logo">
+                            <img src={logo} alt="" />
+                        </div>
+                        <div className="profile-info">
+                            <Typography variant="h5">Name: {student.name}</Typography>
+                            <Typography variant="body1">Father's Name: {student.father}</Typography>
+                            <Typography variant="body1">Mother's Name: {student.mother}</Typography>
+                            <Typography variant="body1">Parents Occupation: {student.parentsOccupation}</Typography>
+                            <Typography variant="body1">Gender: {student.gender}</Typography>
+                            <Typography variant="body1">School: {student.school}</Typography>
+                            <Typography variant="body1">Class: {student.cls}</Typography>
+                            <Typography variant="body1">Branch: {student.branch}</Typography>
+                            <Typography variant="body1">Addmission: {student.addmission.slice(0, 10)}</Typography>
+                            <Typography variant="body1">Address: {student.address}</Typography>
+                        </div>
+                    </div>
+
+                    <div className="footer-text">
+                        They are not street-child they are nogorful
+                    </div>
+
+                    <div className="footer-btn">
+                        <Button onClick={handleStudentDelete} variant="contained" color="error">Delete</Button>
+                        <Link to={`/update/student/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
+                    </div>
+                </div>
+            }
+        </div>
+
     );
 };
 
