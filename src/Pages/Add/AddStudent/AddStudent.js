@@ -2,21 +2,14 @@ import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField
 import React, { useState } from 'react';
 import axios from "axios";
 const AddStudent = () => {
-    const [gender, setGender] = useState('male');
-    const [addStuData, setAddStuData] = useState({ gender: gender, img: '', parentsJob: '' });
+    const [addStuData, setAddStuData] = useState({ gender: 'male', img: '', parentsJob: '', branch: 'Sholoshahar' });
     const handleAddStuBlur = e => {
         const type = e.target.name;
+        console.log(addStuData);
         const value = e.target.value;
         const newInfo = { ...addStuData };
         newInfo[type] = value;
         setAddStuData(newInfo);
-    }
-    const handleGenderChange = e => {
-        setGender(e.target.value);
-        const newInfo = { ...addStuData };
-        newInfo['gender'] = e.target.value;
-        setAddStuData(newInfo);
-        console.log(addStuData);
     }
     const handleAddStuSubmit = e => {
         console.log(addStuData);
@@ -28,7 +21,7 @@ const AddStudent = () => {
                 }
                 else if (response.data.insertId) {
                     alert('Insertion Successful');
-                    setAddStuData({ gender: 'male', img: '', parentsJob: '' });
+                    setAddStuData({ gender: 'male', img: '', parentsJob: '', branch: 'Sholoshahar' });
                 }
             })
         e.target.reset();
@@ -52,6 +45,24 @@ const AddStudent = () => {
                         shrink: true,
                     }}
                 />
+                <FormControl style={{ width: '75%', marginTop: '18px' }} >
+                    <InputLabel id="demo-simple-select-label">Branch</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={addStuData.branch}
+                        label="Branch"
+                        name="branch"
+                        onChange={handleAddStuBlur}
+                    >
+                        <MenuItem value="Sholoshahar">Sholoshahar</MenuItem>
+                        <MenuItem value="Cantonment">Cantonment</MenuItem>
+                        <MenuItem value="Agrabad">Agrabad</MenuItem>
+                        <MenuItem value="CRB">CRB</MenuItem>
+                        <MenuItem value="Patiya">Patiya</MenuItem>
+                        <MenuItem value="Patiya">DC hill</MenuItem>
+                    </Select>
+                </FormControl>
                 <TextField name="img" onBlur={handleAddStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Image" variant="outlined" type="file" InputLabelProps={{
                     shrink: true,
                 }} />
@@ -64,16 +75,16 @@ const AddStudent = () => {
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={gender}
+                        value={addStuData.gender}
                         label="Gender"
                         name="gender"
-                        onChange={handleGenderChange}
+                        onChange={handleAddStuBlur}
                     >
                         <MenuItem value="male">Male</MenuItem>
                         <MenuItem value="female">Female</MenuItem>
                     </Select>
                 </FormControl>
-                <TextField name="parentsJob" onBlur={handleAddStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Parents Occupation" variant="outlined" />
+                <TextField name="parentsOccupation" onBlur={handleAddStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Parents Occupation" variant="outlined" />
 
                 <Button variant="contained" style={{ width: '75%', marginTop: '18px', marginBottom: '40px' }} type="submit">Add</Button>
             </form>

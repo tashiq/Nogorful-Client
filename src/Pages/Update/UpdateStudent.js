@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 
 const UpdateStudent = () => {
-    const [gender, setGender] = useState('');
+    // const [gender, setGender] = useState('');
     const [prevInfo, setPrevInfo] = useState({});
     // const { id } = useParams();
 
@@ -40,14 +40,7 @@ const UpdateStudent = () => {
         newInfo[type] = value;
         setPrevInfo(newInfo);
     }
-    const handleGenderChange = e => {
-        setGender(e.target.value);
-        const newInfo = { ...prevInfo };
-        newInfo['gender'] = e.target.value;
-        setPrevInfo(newInfo);
-    }
     const handleUpdateStuSubmit = e => {
-        console.log(prevInfo);
         axios.put(`http://localhost:4000/students/${id}`, prevInfo)
             .then(response => {
                 if (response.data.affectedRows) {
@@ -78,6 +71,24 @@ const UpdateStudent = () => {
                             shrink: true,
                         }}
                     />
+                    <FormControl style={{ width: '75%', marginTop: '18px' }} >
+                        <InputLabel id="demo-simple-select-label">Branch</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={prevInfo.branch}
+                            label="Branch"
+                            name="branch"
+                            onChange={handleUpdateStuBlur}
+                        >
+                            <MenuItem value="Sholoshahar">Sholoshahar</MenuItem>
+                            <MenuItem value="Cantonment">Cantonment</MenuItem>
+                            <MenuItem value="Agrabad">Agrabad</MenuItem>
+                            <MenuItem value="CRB">CRB</MenuItem>
+                            <MenuItem value="Patiya">Patiya</MenuItem>
+                            <MenuItem value="Patiya">DC hill</MenuItem>
+                        </Select>
+                    </FormControl>
                     <TextField defaultValue={prevInfo.img} name="img" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Image" variant="outlined" type="file" InputLabelProps={{
                         shrink: true,
                     }} />
@@ -93,15 +104,15 @@ const UpdateStudent = () => {
                             value={prevInfo.gender}
                             label="Gender"
                             name="gender"
-                            onChange={handleGenderChange}
+                            onChange={handleUpdateStuBlur}
                         >
                             <MenuItem value="male">Male</MenuItem>
                             <MenuItem value="female">Female</MenuItem>
                         </Select>
                     </FormControl>
-                    <TextField defaultValue={prevInfo.parentsJob} name="parentsJob" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Parents Occupation" variant="outlined" />
+                    <TextField defaultValue={prevInfo.parentsOccupation} name="parentsOccupation" onBlur={handleUpdateStuBlur} style={{ width: '75%', marginTop: '18px' }} label="Parents Occupation" variant="outlined" />
 
-                    <Button variant="contained" style={{ width: '75%', marginTop: '18px', marginBottom: '40px' }} type="submit">Add</Button>
+                    <Button variant="contained" style={{ width: '75%', marginTop: '18px', marginBottom: '40px' }} type="submit">Update</Button>
                 </form>
             </Container>
 
