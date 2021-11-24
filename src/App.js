@@ -14,6 +14,7 @@ import Teacher from './Pages/Teacher/Teacher'
 import AddStudent from './Pages/Add/AddStudent/AddStudent'
 import UpdateStudent from './Pages/Update/UpdateStudent/UpdateStudent'
 import AddTeacher from './Pages/Add/AddTeacher/AddTeacher';
+import UpdateTeacher from './Pages/Update/UpdateTeacher/UpdateTeacher';
 function App() {
   return (
     <AuthProvider>
@@ -29,6 +30,7 @@ function App() {
           <Route path="/students/:id" element={<Student />} />
           <Route path="/teachers/:id" element={<Teacher />} />
           <Route path="/update/student/:id" element={<UpdateStudent />} />
+          <Route path="/update/teacher/:id" element={<UpdateTeacher />} />
           <Route path="/add/student" element={<AddStudent />} />
           <Route path="/add/teacher" element={<AddTeacher />} />
         </Routes>

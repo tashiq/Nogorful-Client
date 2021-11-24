@@ -10,7 +10,9 @@ import { Link, useNavigate } from 'react-router-dom'
 const Student = () => {
     const { id } = useParams();
     const [student, setStudent] = useState({})
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [winSize, setWinSize] = useState(window.innerWidth);
+
     useEffect(() => {
         axios.get(`http://localhost:4000/students/${id}`)
             .then(response => setStudent(response.data))
@@ -26,6 +28,12 @@ const Student = () => {
                 }
             })
     }
+
+    const onresize = () => {
+        console.log(window.innerWidth);
+        setWinSize(window.innerWidth);
+    }
+    window.addEventListener('resize', onresize);
     return (
         <div>
 
@@ -37,9 +45,10 @@ const Student = () => {
                         <div className="profile-img">
                             <img src={student.img ? student.img : clipart} alt={student.name} />
                         </div>
-                        <div className="profile-logo">
-                            <img src={logo} alt="" />
-                        </div>
+                        {winSize >= 800 &&
+                            <div className="profile-logo">
+                                <img src={logo} alt="" />
+                            </div>}
                         <div className="profile-info">
                             <Typography variant="h5">Name: {student.name}</Typography>
                             <Typography variant="body1">Father's Name: {student.father}</Typography>
