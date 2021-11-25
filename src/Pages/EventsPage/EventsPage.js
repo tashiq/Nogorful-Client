@@ -1,10 +1,13 @@
-import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, Container, FormControl, Typography, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 const Event = () => {
     const [addEventData, setAddEventData] = useState({});
-    const navigate = useNavigate()
+    const [guestData, setGuestData] = useState([]);
+    const [guest, setGuest] = useState({});
+    const navigate = useNavigate();
     const handleAddEventBlur = e => {
         const type = e.target.name;
         const value = e.target.value;
@@ -13,8 +16,9 @@ const Event = () => {
         setAddEventData(newInfo);
     }
     const handleAddEventSubmit = e => {
-        console.log(addEventData);
-        axios.post('http://localhost:4000/events', addEventData)
+        console.log(addEventData, guestData);
+        const newInfo = { event: addEventData, guests: guestData }
+        axios.post('http://localhost:4000/events', newInfo)
             .then(response => {
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)
@@ -27,33 +31,51 @@ const Event = () => {
             })
         e.preventDefault();
     }
+    const handleAddGuestBlur = e => {
+        const type = e.target.name;
+        const value = e.target.value;
+        const newInfo = { ...guest };
+        newInfo[type] = value;
+        setGuest(newInfo);
+        // console.log(guest);
+    }
+    const handleAddGuest = e => {
+        const newInfo = [...guestData];
+        newInfo.push(guest);
+        setGuest({});
+        setGuestData(newInfo);
+        e.target.reset();
+        e.preventDefault();
+    }
     return (
-        <Container>
+        <Container sx={{ textAlign: 'center' }}>
             <Typography variant="h3" sx={{ my: 3 }}>Add a Event Description</Typography>
-            <form onSubmit={handleAddEventSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <TextField required name="eventName" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }} label="Event Name" variant="outlined" />
-                <TextField name="place" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }} label="Event Place" variant="outlined" />
+            <form >
+                <FormControl sx={{ width: '100%' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                ><TextField required name="eventName" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }} label="Event Name" variant="outlined" />
+                    <TextField name="place" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }} label="Event Place" variant="outlined" />
 
-                <TextField required
-                    id="date"
-                    label="Event Date"
-                    name="date"
-                    type="date" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }}
+                    <TextField required
+                        id="date"
+                        label="Event Date"
+                        name="date"
+                        type="date" onBlur={handleAddEventBlur} style={{ width: '75%', marginTop: '18px' }}
 
-                    sx={{ width: 220 }}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-                <FormControl sx={{ width: '75%' }}>
-                    <TextField required name="gName" onBlur={handleAddEventBlur} style={{ width: '100%', marginTop: '18px' }} label="Guest Name" variant="outlined" />
-                    <TextField required name="gPhone" onBlur={handleAddEventBlur} style={{ width: '100%', marginTop: '18px' }} label="Guest Phone Number" variant="outlined" />
-                    <TextField required name="gRole" onBlur={handleAddEventBlur} style={{ width: '100%', marginTop: '18px' }} label="Guest's Role" variant="outlined" />
-                </FormControl>
+                        sx={{ width: 220 }}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    /> </FormControl>
 
-
-                <Button variant="contained" style={{ width: '75%', marginTop: '18px', marginBottom: '40px' }} type="submit">Add</Button>
             </form>
+            <Typography sx={{ my: 3 }} variant="h3">Guest Information</Typography>
+            <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleAddGuest} >
+                <TextField required name="gName" onBlur={handleAddGuestBlur} style={{ width: '75%', marginTop: '18px' }} label="Guest Name" variant="outlined" />
+                <TextField required name="gPhone" onBlur={handleAddGuestBlur} style={{ width: '75%', marginTop: '18px' }} label="Guest Phone Number" variant="outlined" />
+                <TextField name="gRole" onBlur={handleAddGuestBlur} style={{ width: '75%', marginTop: '18px' }} label="Guest's Role" variant="outlined" />
+                <Button variant="contained" sx={{ mt: 2 }} type="submit">Add This Guest &#10004; </Button>
+            </form>
+            <Button variant="contained" onClick={handleAddEventSubmit} style={{ width: '75%', marginTop: '18px', marginBottom: '40px' }} type="submit">Add</Button>
         </Container>
     );
 };

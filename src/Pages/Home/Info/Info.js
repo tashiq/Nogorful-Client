@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import SingleInfo from '../SingleInfo/SingleInfo';
 const Info = () => {
     const [info, setInfo] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:4000/info')
-            .then(res => res.json())
-            .then(data => setInfo(data));
+    // useEffect(() => {
+    //     fetch('http://localhost:4000/info')
+    //         .then(res => res.json())
+    //         .then(data => setInfo(data));
 
-    }, [])
+    // }, [])
 
     return (
         <Box id="info"
@@ -24,10 +24,10 @@ const Info = () => {
                 }
             }}
         >
-            {
+            {/* {
                 Object.keys(info)?.map(item => <SingleInfo type={item} amount={info[item]} key={info[item]._id}></SingleInfo>)
                 //  (singleInfo => )
-            }
+            } */}
         </Box>
     );
 };
