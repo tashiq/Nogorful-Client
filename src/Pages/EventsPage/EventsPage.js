@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-const Event = () => {
+const EventPage = () => {
     const [addEventData, setAddEventData] = useState({});
     const [guestData, setGuestData] = useState([]);
     const [guest, setGuest] = useState({});
@@ -80,4 +80,4 @@ const Event = () => {
     );
 };
 
-export default Event;
+export default EventPage;

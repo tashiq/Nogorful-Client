@@ -8,17 +8,20 @@ const Branch = ({ info }) => {
     return (
 
         <Grid item xs={12} md={6}>
-            <Card sx={{ maxWidth: 650 }}>
+            <Card sx={{ maxWidth: 650, textAlign: 'center' }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         height="140"
-                        image={info.img}
+                        image={""}
                         alt={info.location}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography variant="h5" component="div">
                             {info.location}
+                        </Typography>
+                        <Typography variant="h6" component="div">
+                            {info.position}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {info.description}

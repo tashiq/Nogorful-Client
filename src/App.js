@@ -15,6 +15,8 @@ import AddStudent from './Pages/Add/AddStudent/AddStudent'
 import UpdateStudent from './Pages/Update/UpdateStudent/UpdateStudent'
 import AddTeacher from './Pages/Add/AddTeacher/AddTeacher';
 import UpdateTeacher from './Pages/Update/UpdateTeacher/UpdateTeacher';
+import EventPage from './Pages/EventsPage/EventsPage';
+import AddBranch from './Pages/Add/AddBranch/AddBranch';
 function App() {
   return (
     <AuthProvider>
@@ -33,6 +35,8 @@ function App() {
           <Route path="/update/teacher/:id" element={<UpdateTeacher />} />
           <Route path="/add/student" element={<AddStudent />} />
           <Route path="/add/teacher" element={<AddTeacher />} />
+          <Route path="/add/event" element={<EventPage />} />
+          <Route path="/add/branch" element={<AddBranch />} />
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

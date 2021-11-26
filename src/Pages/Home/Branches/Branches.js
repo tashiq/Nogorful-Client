@@ -5,18 +5,20 @@ import Branch from '../Branch/Branch';
 
 
 const Branches = () => {
-    // const [branches, setBranches] = useState([]);
-    // useEffect(() => {
-    //     fetch('http://localhost:4000/branches')
-    //         .then(res => res.json())
-    //         .then(data => setBranches(data))
+    const [branches, setBranches] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:4000/branches')
+            .then(res => res.json())
+            .then(data => setBranches(data))
 
-    // }, [])
+    }, [])
     return (
         <Container id="branches">
             <Typography variant="h4" sx={{ fontWeight: 600, my: 3, color: '#363d6b' }}>Branches</Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} style={{}}>
-
+                {
+                    branches.map(branch => <Branch key={branch.id} info={branch} />)
+                }
             </Grid>
         </Container>
 
