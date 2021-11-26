@@ -34,6 +34,9 @@ const AddBranch = () => {
                 <TextField required name="location" onBlur={handleAddBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Place" variant="outlined" />
                 <TextField required name="position" onBlur={handleAddBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Position" variant="outlined" />
                 <TextField required name="time" onBlur={handleAddBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Time" variant="outlined" />
+                <TextField name="img" onBlur={handleAddBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Image" variant="outlined" type="file" InputLabelProps={{
+                    shrink: true,
+                }} />
                 <TextareaAutosize
                     required
                     aria-label="Description"
