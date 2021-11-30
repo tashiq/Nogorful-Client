@@ -36,7 +36,7 @@ const Students = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((row) => (
+                        {students?.map((row) => (
 
                             <TableRow className=""
                                 key={row.id}
