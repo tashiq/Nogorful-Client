@@ -3,8 +3,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid } from '@mui/material';
-const Branch = ({ info }) => {
+import { Button, CardActionArea, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+const Branch = ({ info, dash }) => {
     return (
 
         <Grid item xs={12} md={6}>
@@ -13,7 +14,7 @@ const Branch = ({ info }) => {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={""}
+                        image={info.img}
                         alt={info.location}
                     />
                     <CardContent>
@@ -21,11 +22,14 @@ const Branch = ({ info }) => {
                             {info.location}
                         </Typography>
                         <Typography variant="h6" component="div">
-                            {info.position}
+                            Position: {info.position}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {info.description}
                         </Typography>
+                        {dash &&
+                            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/dashboard/update/branches/${info.id}`}><Button variant="contained" sx={{ my: 2 }}>Update</Button></Link>
+                        }
                     </CardContent>
                 </CardActionArea>
             </Card>

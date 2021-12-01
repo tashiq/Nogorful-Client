@@ -14,7 +14,7 @@ const UpdateBranches = () => {
         fetch(`http://localhost:4000/branches/${id}`)
             .then(response => response.json())
             .then(data => setPrevInfo(data))
-    }, []);
+    }, [id]);
     console.log(prevInfo);
     const handleUpdateBranchBlur = e => {
         const type = e.target.name;
@@ -43,9 +43,12 @@ const UpdateBranches = () => {
                     <Typography variant="h3" sx={{ my: 3 }}>Update a Branch</Typography>
                     <form onSubmit={handleUpdateBranchSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <TextField required name="location" onBlur={handleUpdateBranchBlur} value={prevInfo.location} style={{ width: '75%', marginTop: '18px' }} label="Place" variant="outlined" />
+
                         <TextField required name="position" value={prevInfo.position} onBlur={handleUpdateBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Position" variant="outlined" />
+
                         <TextField required name="time" value={prevInfo.time} onBlur={handleUpdateBranchBlur} style={{ width: '75%', marginTop: '18px' }} label="Time" variant="outlined" />
-                        <TextField name="img" onBlur={handleUpdateBranchBlur} value={prevInfo.img} style={{ width: '75%', marginTop: '18px' }} label="Image" variant="outlined" type="file" InputLabelProps={{
+
+                        <TextField name="img" onBlur={handleUpdateBranchBlur} value="" style={{ width: '75%', marginTop: '18px' }} label="Image" variant="outlined" type="file" InputLabelProps={{
                             shrink: true,
                         }} />
                         <TextareaAutosize

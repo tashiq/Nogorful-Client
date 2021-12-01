@@ -69,7 +69,7 @@ const Student = () => {
 
                     <div className="footer-btn">
                         <Button onClick={handleStudentDelete} variant="contained" color="error">Delete</Button>
-                        <Link to={`/update/student/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
+                        <Link to={`/dashboard/update/student/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
                     </div>
                 </div>
             }

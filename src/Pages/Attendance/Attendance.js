@@ -1,6 +1,8 @@
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Footer from '../Shared/Footer/Footer';
+import Navigation from '../Shared/Navigation/Navigation';
 
 const Attendance = () => {
     const [teacherId, setTeacherId] = useState(null);
@@ -31,13 +33,11 @@ const Attendance = () => {
     const submitAttendance = e => {
         const newData = { students: checked, teacherId, date }
         axios.post('http://localhost:4000/attendance', newData)
-            .then(res => console.log(res.data))
-        setTeacherId(null)
-        setStudents([])
-        setChecked([])
-        setDate('')
-        setBranch('')
-        e.target.reset();
+            .then(res => {
+
+            })
+
+        e.preventDefault();
     }
     useEffect(() => {
         fetch(`http://localhost:4000/students?branch=${branch}`)
@@ -46,7 +46,9 @@ const Attendance = () => {
     }, [branch])
     return (
         <div>
-            <form>
+            <Navigation />
+            <Typography variant="h3" sx={{ m: 2 }}>Attendance </Typography>
+            <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <TextField required
                     id="date"
                     label="Addmission Date"
@@ -77,16 +79,18 @@ const Attendance = () => {
                         <MenuItem value="Patiya">DC hill</MenuItem>
                     </Select>
                 </FormControl>
+                <Typography variant="h5" sx={{ my: 3 }}>Students</Typography>
                 <FormControl style={{ width: '75%', marginTop: '18px' }} >
                     {
                         students?.map(student => <>
                             <input type="checkbox" id={student.id + ''} name={student.id} value={student.id} onChange={checkChange} />
-                            <label for={student.id + ''} style={{ fontSize: '17px', paddingLeft: '10px' }}> ID: {student.id} Name: {student.name}</label>
+                            <label for={student.id + ''} style={{ fontSize: '17px', paddingLeft: '20px' }}> ID: {student.id} Name: {student.name}</label>
                         </>)
                     }
                 </FormControl>
-                <Button type="submit" style={{ width: '75%', marginTop: '18px' }} variant="outlined" onClick={submitAttendance}>Submit Attendance</Button>
+                <Button type="submit" style={{ width: '75%', marginTop: '18px' }} variant="outlined" onClick={submitAttendance} sx={{ mb: 4 }}>Submit Attendance</Button>
             </form>
+            <Footer />
         </div>
     );
 };

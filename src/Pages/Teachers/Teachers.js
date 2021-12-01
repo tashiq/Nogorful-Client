@@ -9,6 +9,8 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material';
+import Footer from '../Shared/Footer/Footer';
+import Navigation from '../Shared/Navigation/Navigation';
 
 const Teachers = () => {
 
@@ -21,6 +23,7 @@ const Teachers = () => {
     }, [])
     return (
         <>
+            <Navigation />
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 600 }} aria-label="simple table">
                     <TableHead>
@@ -55,10 +58,11 @@ const Teachers = () => {
                 </Table>
             </TableContainer>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Link to={`/add/teacher`} style={{ textDecoration: 'none' }}>
+                <Link to={`/dashboard/addteacher`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" sx={{ my: 4 }}>Add A Teacher</Button>
                 </Link>
             </div>
+            <Footer />
         </>
     );
 }

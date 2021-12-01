@@ -10,6 +10,8 @@ import axios from 'axios';
 import './Students.css'
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material';
+import Footer from '../Shared/Footer/Footer';
+import Navigation from '../Shared/Navigation/Navigation';
 
 const Students = () => {
 
@@ -23,6 +25,7 @@ const Students = () => {
     }, [])
     return (
         <>
+            <Navigation />
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 600 }} aria-label="simple table">
                     <TableHead>
@@ -57,10 +60,11 @@ const Students = () => {
                 </Table>
             </TableContainer>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Link to={`/add/student`} style={{ textDecoration: 'none' }}>
+                <Link to={`/dashboard/addstudent`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" sx={{ my: 4 }}>Add A Student</Button>
                 </Link>
             </div>
+            <Footer />
         </>
     );
 }

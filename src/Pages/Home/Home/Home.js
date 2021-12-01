@@ -1,16 +1,18 @@
 import React from 'react';
-import Attendance from '../../Attendance/Attendance';
 import Banner from '../Banner/Banner';
 import Branches from '../Branches/Branches';
 import Events from '../Events/Events';
+import Footer from '../../Shared/Footer/Footer'
+import Navigation from '../../Shared/Navigation/Navigation'
 const Home = () => {
 
     return (
         <div>
-            <Attendance />
+            <Navigation />
             <Banner></Banner>
             <Branches></Branches>
             <Events></Events>
+            <Footer />
         </div>
     );
 };
