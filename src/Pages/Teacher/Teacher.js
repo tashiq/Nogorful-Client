@@ -25,7 +25,7 @@ const Teacher = () => {
 
     }
     const onresize = () => {
-        console.log(window.innerWidth);
+        // console.log(window.innerWidth);
         setWinSize(window.innerWidth);
     }
     window.addEventListener('resize', onresize);

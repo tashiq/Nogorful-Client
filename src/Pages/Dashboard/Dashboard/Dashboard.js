@@ -49,6 +49,9 @@ function Dashboard(props) {
                 <ListItem button >
                     <Link to='attendance/details' style={{ textDecoration: 'none', color: 'black', fontSize: '18px' }}>Attendance Details</Link>
                 </ListItem>
+                <ListItem button >
+                    <Link to='makeadmin' style={{ textDecoration: 'none', color: 'black', fontSize: '18px' }}>Make An Admin</Link>
+                </ListItem>
             </List>
             <Divider />
 

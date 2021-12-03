@@ -13,7 +13,7 @@ const AddBranch = () => {
         setAddBranchData(newInfo);
     }
     const handleAddBranchSubmit = e => {
-        console.log(addBranchData);
+        // console.log(addBranchData);
         axios.post('http://localhost:4000/branches', addBranchData)
             .then(response => {
                 if (response.data.errno) {

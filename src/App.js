@@ -22,6 +22,7 @@ import AttendanceDetails from './Pages/Dashboard/AttendanceDetails/AttendanceDet
 import Branches from './Pages/Home/Branches/Branches';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import AdminRoute from './AdminRoute/AdminRoute'
+import MakeAdmin from './Pages/Dashboard/MakeAnAdmin/MakeAdmin';
 function App() {
   return (
     <AuthProvider>
@@ -42,6 +43,7 @@ function App() {
               <Route path="update/teacher/:id" element={<UpdateTeacher />} />
               <Route path="update/branches/" element={<Branches>Data</Branches>} />
               <Route path="update/branches/:id" element={<UpdateBranches />} />
+              <Route path="makeadmin" element={<MakeAdmin />} />
             </Route>
           </Route>
           <Route element={<PrivateRoute />}>

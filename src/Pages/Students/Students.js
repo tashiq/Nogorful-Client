@@ -20,7 +20,7 @@ const Students = () => {
         axios.get('http://localhost:4000/students')
             .then(result => {
                 setStudents(result.data);
-                console.log(result.data);
+                // console.log(result.data);
             })
     }, [])
     return (

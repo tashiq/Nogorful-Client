@@ -17,7 +17,7 @@ const UpdateStudent = () => {
             .then(response => response.json())
             .then(data => setPrevInfo(data))
     }, []);
-    console.log(prevInfo);
+    // console.log(prevInfo);
     const handleUpdateStuBlur = e => {
         const type = e.target.name;
         const value = e.target.value;

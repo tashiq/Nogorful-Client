@@ -44,7 +44,7 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, pass)
             .then(result => {
                 setUser(result.user);
-                const whereTo = location.state.from.pathname || '/home';
+                const whereTo = location?.state?.from?.pathname || '/home';
                 // console.log(whereTo);
                 navigate(whereTo);
             })

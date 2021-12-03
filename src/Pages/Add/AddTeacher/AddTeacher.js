@@ -7,14 +7,14 @@ const AddTeacher = () => {
     const navigate = useNavigate()
     const handleAddTeacherBlur = e => {
         const type = e.target.name;
-        console.log(addStuData);
+        // console.log(addStuData);
         const value = e.target.value;
         const newInfo = { ...addStuData };
         newInfo[type] = value;
         setAddStuData(newInfo);
     }
     const handleAddStuSubmit = e => {
-        console.log(addStuData);
+        // console.log(addStuData);
         axios.post('http://localhost:4000/teachers', addStuData)
             .then(response => {
                 if (response.data.errno) {

@@ -15,7 +15,7 @@ const UpdateBranches = () => {
             .then(response => response.json())
             .then(data => setPrevInfo(data))
     }, [id]);
-    console.log(prevInfo);
+    // console.log(prevInfo);
     const handleUpdateBranchBlur = e => {
         const type = e.target.name;
         const value = e.target.value;

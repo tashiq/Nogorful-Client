@@ -2,7 +2,7 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import './Navigation.css'
 import useAuth from '../../../Hooks/useAuth'
-import { Typography } from '@mui/material';
+// import { Typography } from '@mui/material';
 import logoImg from '../../../images/banner.png'
 import { Link } from 'react-router-dom';
 const Navigation = () => {
