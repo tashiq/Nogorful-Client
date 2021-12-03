@@ -4,9 +4,9 @@ import './Navigation.css'
 import useAuth from '../../../Hooks/useAuth'
 import { Typography } from '@mui/material';
 import logoImg from '../../../images/banner.png'
+import { Link } from 'react-router-dom';
 const Navigation = () => {
-    const { user } = useAuth();
-    console.log(user);
+    const { logOut, user } = useAuth();
     return (
         <nav className="navbar navbar-expand-lg navbar-light p-3 bg-light">
             <div className="container-fluid">
@@ -34,18 +34,17 @@ const Navigation = () => {
                         <li className="nav-item">
                             <HashLink className="navitem" to='/dashboard'>Dashboard</HashLink>
                         </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/login'>Login</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/signIn'>Sign In</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            {
-                                user.email &&
-                                <Typography>{user.email}</Typography>
-                            }
-                        </li>
+                        {
+                            user.email ?
+                                <li className="nav-item" onClick={logOut}>
+                                    <Link to="/home" className="navitem">Log Out({user.displayName})</Link>
+                                </li>
+                                :
+                                <li className="nav-item">
+                                    <HashLink className="navitem" to='/login'>Login</HashLink>
+                                </li>
+                        }
+
 
                     </ul>
 

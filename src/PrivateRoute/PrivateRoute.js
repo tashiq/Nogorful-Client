@@ -1,18 +1,20 @@
 import React from 'react';
-import { Navigate } from 'react-router';
 import useAuth from '../Hooks/useAuth'
 import CircularProgress from '@mui/material/CircularProgress'
 import { Outlet } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import { useLocation } from 'react-router';
 const PrivateRoute = () => {
-    const { user, isLoading } = useAuth();
+    const location = useLocation();
+    const { user, isLoading } = useAuth()
     if (isLoading) {
         return <CircularProgress />
     }
     else if (user.email) {
-        <Outlet />
+        return <Outlet />
     }
     else {
-        <Navigate to="/login" />
+        return <Navigate to="/login" state={{ from: location }} />
     }
 };
 

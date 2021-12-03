@@ -2,15 +2,19 @@ import React, { useRef } from 'react';
 import useAuth from '../../Hooks/useAuth'
 import Footer from '../Shared/Footer/Footer'
 import Navigation from '../Shared/Navigation/Navigation';
+import { Link } from "react-router-dom"
+import { useLocation, useNavigate } from 'react-router';
 const Login = () => {
     const passRef = useRef();
     const emailRef = useRef();
-    const { emailSignIn, error, isLoading } = useAuth();
+    const { emailSignIn } = useAuth();
+    const location = useLocation();
+    console.log(location);
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         const Pass = passRef.current.value;
         const Email = emailRef.current.value;
-        const newLogin = { Email, Pass };
-        emailSignIn(Email, Pass);
+        emailSignIn(Email, Pass, location, navigate);
         e.preventDefault();
         e.target.reset();
     }
@@ -28,6 +32,7 @@ const Login = () => {
                     </fieldset>
                 </form>
             </div>
+            <Link to="/signIn">New User? Please Register</Link>
             <Footer />
         </>
     );

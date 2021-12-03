@@ -3,6 +3,9 @@ import React, { useRef } from 'react';
 import useAuth from '../../Hooks/useAuth'
 import Navigation from '../Shared/Navigation/Navigation'
 import Footer from '../Shared/Footer/Footer'
+// import axios from 'axios';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 const SignIn = () => {
     const FirstNameRef = useRef();
     const LastNameRef = useRef();
@@ -12,7 +15,8 @@ const SignIn = () => {
     const EducationRef = useRef();
     const JoinRef = useRef();
     const PassRef = useRef();
-    const { createUser, error, googleSignIn } = useAuth();
+    const { createUser, googleSignIn } = useAuth();
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         const FirstName = FirstNameRef.current.value;
         const LastName = LastNameRef.current.value;
@@ -22,32 +26,26 @@ const SignIn = () => {
         const Education = EducationRef.current.value;
         const Join = JoinRef.current.value;
         const Pass = PassRef.current.value;
-        createUser(Email, Pass);
-        if (error) {
-            alert(error);
-            console.log(error);
+        createUser(Email, Pass, FirstName, navigate);
+
+        const newMember = {
+            FirstName,
+            LastName,
+            Phone,
+            Email,
+            Adress,
+            Education,
+            Join
         }
-        else {
-            const newMember = {
-                FirstName,
-                LastName,
-                Phone,
-                Email,
-                Adress,
-                Education,
-                Join,
-                Pass
-            }
-            fetch('http://localhost:4000/admin', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(newMember)
-            })
-                .then(res => res.json())
-                .then(data => console.log(data))
-        }
+        fetch('http://localhost:4000/newuser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newMember)
+        })
+            .then(res => console.log(res.data))
+
         e.preventDefault();
         e.target.reset();
     }
@@ -77,7 +75,9 @@ const SignIn = () => {
                     </Typography>
                     <Button variant="contained" onClick={googleSignIn} sx={{ backgroundColor: 'grey' }}>Signin Using google Account</Button>
                 </div>
+                <Link to="/login">Already An User? Please Login</Link>
             </Container>
+
             <Footer />
         </>
     );

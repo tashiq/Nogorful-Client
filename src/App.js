@@ -20,6 +20,8 @@ import Attendance from './Pages/Attendance/Attendance';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import AttendanceDetails from './Pages/Dashboard/AttendanceDetails/AttendanceDetails';
 import Branches from './Pages/Home/Branches/Branches';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import AdminRoute from './AdminRoute/AdminRoute'
 function App() {
   return (
     <AuthProvider>
@@ -29,22 +31,26 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/dashboard" element={<Dashboard />} >
-            <Route path="addevent" element={<AddEvent />} />
-            <Route path="addbranch" element={<AddBranch />} />
-            <Route path="addstudent" element={<AddStudent />} />
-            <Route path="addteacher" element={<AddTeacher />} />
-            <Route path="attendance/details" element={<AttendanceDetails />} />
-            <Route path="update/student/:id" element={<UpdateStudent />} />
-            <Route path="update/teacher/:id" element={<UpdateTeacher />} />
-            <Route path="update/branches/" element={<Branches>Data</Branches>} />
-            <Route path="update/branches/:id" element={<UpdateBranches />} />
+          <Route element={<AdminRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} >
+              <Route path="addevent" element={<AddEvent />} />
+              <Route path="addbranch" element={<AddBranch />} />
+              <Route path="addstudent" element={<AddStudent />} />
+              <Route path="addteacher" element={<AddTeacher />} />
+              <Route path="attendance/details" element={<AttendanceDetails />} />
+              <Route path="update/student/:id" element={<UpdateStudent />} />
+              <Route path="update/teacher/:id" element={<UpdateTeacher />} />
+              <Route path="update/branches/" element={<Branches>Data</Branches>} />
+              <Route path="update/branches/:id" element={<UpdateBranches />} />
+            </Route>
           </Route>
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/students/:id" element={<Student />} />
-          <Route path="/teachers/:id" element={<Teacher />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/teachers" element={<Teachers />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/students/:id" element={<Student />} />
+            <Route path="/teachers/:id" element={<Teacher />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
