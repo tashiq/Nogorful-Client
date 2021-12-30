@@ -6,6 +6,7 @@ import useAuth from '../../../Hooks/useAuth'
 import logoImg from '../../../images/banner.png'
 import { Link } from 'react-router-dom';
 const Navigation = () => {
+    console.log(useAuth);
     const { logOut, user } = useAuth();
     return (
         <nav className="navbar navbar-expand-lg navbar-light p-3 bg-light">

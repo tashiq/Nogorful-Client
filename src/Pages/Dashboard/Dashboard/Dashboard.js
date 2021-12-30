@@ -88,7 +88,7 @@ function Dashboard(props) {
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
-            >
+            >'<i className="fas fa-hamburger"></i>'
                 <Drawer
                     container={container}
                     variant="temporary"

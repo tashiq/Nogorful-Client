@@ -1,8 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Event from '../Event/Event';
-
-
 const Events = () => {
     const [events, setEvents] = useState([]);
     useEffect(() => {

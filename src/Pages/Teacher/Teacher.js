@@ -48,6 +48,7 @@ const Teacher = () => {
                             }
                             <div className="profile-info">
                                 <Typography variant="h5">Name: {teacher.name}</Typography>
+                                <Typography variant="body1">ID: {teacher.id}</Typography>
                                 <Typography variant="body1">Phone: {teacher.phone || "Not Provided"}</Typography>
                                 <Typography variant="body1">Email: {teacher.email || "Not Provided"}</Typography>
                                 <Typography variant="body1">Degree: {teacher.degree || "Not Provided"}</Typography>

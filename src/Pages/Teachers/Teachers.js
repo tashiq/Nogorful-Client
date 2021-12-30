@@ -29,7 +29,7 @@ const Teachers = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Phone</TableCell>
+                            <TableCell sx={{ fontWeight: 600 }} align="right">ID</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Degree</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Institution</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
@@ -44,14 +44,12 @@ const Teachers = () => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">{row.name}</TableCell>
-                                <TableCell align="right">{row.phone}</TableCell>
+                                <TableCell align="right">{row.id}</TableCell>
                                 <TableCell align="right">{row.degree}</TableCell>
                                 <TableCell align="right">{row.institution}</TableCell>
                                 <TableCell align="right">{row.branch}</TableCell>
                                 <TableCell align="right">{row.joined.slice(0, 10)}</TableCell>
                                 <TableCell align="left"> <Link to={`/teachers/${row.id}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
-
-
                             </TableRow>
                         ))}
                     </TableBody>

@@ -9,12 +9,12 @@ const Home = () => {
     return (
         <div>
             <Navigation />
-            <Banner></Banner>
-            <Branches></Branches>
-            <Events></Events>
+            <Banner />
+            <Branches />
+            <Events />
             <Footer />
         </div>
     );
 };
 
-export default Home;
+export default Home

@@ -1,13 +1,12 @@
 import { Button, Container, FormControl, Typography, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const AddEvent = () => {
     const [addEventData, setAddEventData] = useState({});
     const [guestData, setGuestData] = useState([]);
     const [guest, setGuest] = useState({});
-    const navigate = useNavigate();
     const handleAddEventBlur = e => {
         const type = e.target.name;
         const value = e.target.value;
