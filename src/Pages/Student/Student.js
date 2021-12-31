@@ -7,6 +7,8 @@ import clipart from '../../images/clipart.png'
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom'
+import Navigation from '../Shared/Navigation/Navigation';
+import Footer from '../Shared/Footer/Footer';
 const Student = () => {
     const { id } = useParams();
     const [student, setStudent] = useState({})
@@ -36,9 +38,9 @@ const Student = () => {
     window.addEventListener('resize', onresize);
     return (
         <div>
-
+            <Navigation />
             {
-                student.name &&
+                student.firstName &&
                 <div id="stu-profile">
                     <Typography variant="h4" style={{ display: 'inline-block', color: '', backgroundColor: 'white', padding: '10px 20px', borderRadius: '20px' }}>Student Profile</Typography>
                     <div className="main-profile">
@@ -50,16 +52,12 @@ const Student = () => {
                                 <img src={logo} alt="" />
                             </div>}
                         <div className="profile-info">
-                            <Typography variant="h5">Name: {student.name}</Typography>
-                            <Typography variant="body1">Father's Name: {student.father}</Typography>
-                            <Typography variant="body1">Mother's Name: {student.mother}</Typography>
-                            <Typography variant="body1">Parents Occupation: {student.parentsOccupation}</Typography>
-                            <Typography variant="body1">Gender: {student.gender}</Typography>
-                            <Typography variant="body1">School: {student.school}</Typography>
-                            <Typography variant="body1">Class: {student.cls}</Typography>
+                            <Typography variant="h5">First Name: {student.firstName}</Typography>
+                            <Typography variant="body1">Last Name: {student.lastName}</Typography>
+                            <Typography variant="body1">Father's First Name: {student.fatherFirstName}</Typography>
+                            <Typography variant="body1">Father's Last Name: {student.fatherLastName}</Typography>
+                            <Typography variant="body1">Class: {student.class}</Typography>
                             <Typography variant="body1">Branch: {student.branch}</Typography>
-                            <Typography variant="body1">Addmission: {student.addmission.slice(0, 10)}</Typography>
-                            <Typography variant="body1">Address: {student.address}</Typography>
                         </div>
                     </div>
 
@@ -74,6 +72,7 @@ const Student = () => {
                     </div>
                 </div>
             }
+            <Footer />
         </div>
 
     );
