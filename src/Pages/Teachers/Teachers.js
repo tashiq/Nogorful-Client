@@ -24,37 +24,34 @@ const Teachers = () => {
     return (
         <>
             <Navigation />
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 600 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">ID</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Degree</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Institution</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Join Date</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {teachers.map((row) => (
-
-                            <TableRow className=""
-                                key={row.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">{row.name}</TableCell>
-                                <TableCell align="right">{row.id}</TableCell>
-                                <TableCell align="right">{row.degree}</TableCell>
-                                <TableCell align="right">{row.institution}</TableCell>
-                                <TableCell align="right">{row.branch}</TableCell>
-                                <TableCell align="right">{row.joined.slice(0, 10)}</TableCell>
-                                <TableCell align="left"> <Link to={`/teachers/${row.id}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
+            <div className='d-flex justify-content-center'>
+                <TableContainer component={Paper} sx={{ width: 600 }}>
+                    <Table sx={{ width: 600 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="right">phone</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="right">Address</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="right"></TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {teachers.map((row) => (
+
+                                <TableRow className=""
+                                    key={row.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">{row.firstName || ' ' || row.lastName}</TableCell>
+                                    <TableCell align="right">{row.phone}</TableCell>
+                                    <TableCell align="right">{row.address}</TableCell>
+                                    <TableCell align="left"> <Link to={`/teachers/${row.phone}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Link to={`/dashboard/addteacher`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" sx={{ my: 4 }}>Add A Teacher</Button>

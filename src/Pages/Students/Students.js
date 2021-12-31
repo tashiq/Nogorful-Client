@@ -32,10 +32,8 @@ const Students = () => {
                         <TableRow>
                             <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Father's Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Mother's Name</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Class</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">School</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -45,15 +43,11 @@ const Students = () => {
                                 key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">{row.name}</TableCell>
-                                <TableCell align="right">{row.father}</TableCell>
-                                <TableCell align="right">{row.mother}</TableCell>
+                                <TableCell component="th" scope="row">{row.firstName || " " || row.lastName}</TableCell>
+                                <TableCell align="right">{row.fatherFirstName}</TableCell>
                                 <TableCell align="right">{row.branch}</TableCell>
-                                <TableCell align="right">{row.cls}</TableCell>
-                                <TableCell align="right">{row.school}</TableCell>
+                                <TableCell align="right">{row.class}</TableCell>
                                 <TableCell align="left"> <Link to={`/students/${row.id}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
-
-
                             </TableRow>
                         ))}
                     </TableBody>

@@ -14,6 +14,7 @@ const Teacher = () => {
         axios.get(`http://localhost:4000/teachers/${id}`)
             .then(response => setTeacher(response.data))
     }, [id])
+    console.log(teacher)
     const handleTeacherDelete = () => {
         fetch(`http://localhost:4000/teachers/${id}`, { method: 'DELETE' })
             .then(res => res.json())
@@ -34,7 +35,7 @@ const Teacher = () => {
             <div>
 
                 {
-                    teacher.name &&
+                    teacher.firstName &&
                     <div id="stu-profile">
                         <Typography variant="h4" style={{ display: 'inline-block', color: '', backgroundColor: 'white', padding: '10px 20px', borderRadius: '20px' }}>Teacher's Profile</Typography>
                         <div className="main-profile">
@@ -47,16 +48,12 @@ const Teacher = () => {
                                 </div>
                             }
                             <div className="profile-info">
-                                <Typography variant="h5">Name: {teacher.name}</Typography>
-                                <Typography variant="body1">ID: {teacher.id}</Typography>
+                                <Typography variant="h5">First Name: {teacher.firstName}</Typography>
+                                <Typography variant="body1">Last Name: {teacher.lastName}</Typography>
                                 <Typography variant="body1">Phone: {teacher.phone || "Not Provided"}</Typography>
                                 <Typography variant="body1">Email: {teacher.email || "Not Provided"}</Typography>
-                                <Typography variant="body1">Degree: {teacher.degree || "Not Provided"}</Typography>
-                                <Typography variant="body1">Institution: {teacher.institution || "Not Provided"}</Typography>
-                                <Typography variant="body1">Gender: {teacher.gender}</Typography>
                                 <Typography variant="body1">Address: {teacher.address}</Typography>
-                                <Typography variant="body1">Join Date: {teacher.joined.slice(0, 10)}</Typography>
-                                <Typography variant="body1">Branch: {teacher.branch}</Typography>
+                                <Typography variant="body1">Join Date: {teacher?.joindate.slice(0, 10)}</Typography>
                             </div>
                         </div>
 
