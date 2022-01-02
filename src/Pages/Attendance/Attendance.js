@@ -1,19 +1,20 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../Shared/Footer/Footer';
 import Navigation from '../Shared/Navigation/Navigation';
 
 const Attendance = () => {
-    const [teacherId, setTeacherId] = useState(null);
+    const [teachers, setTeachers] = useState([]);
+    const [teacher, setTeacher] = useState(null)
     const [branch, setBranch] = useState('');
     const [students, setStudents] = useState([]);
     const [checked, setChecked] = useState([])
     const [date, setDate] = useState('');
 
-    const onTeacherIdBlur = e => {
-        const value = e.target.value;
-        setTeacherId(value);
+    const onTeacherChange = e => {
+        setTeacher(e.target.value);
     }
     const onBranchChange = e => {
         setBranch(e.target.value);
@@ -31,7 +32,8 @@ const Attendance = () => {
         }
     }
     const submitAttendance = e => {
-        const newData = { students: checked, teacherId, date }
+        const newData = { students: checked, phone: teacher, date }
+        console.log(newData);
         axios.post('http://localhost:4000/attendance', newData)
             .then(res => {
 
@@ -44,9 +46,15 @@ const Attendance = () => {
             .then(res => res.json())
             .then(data => setStudents(data))
     }, [branch])
+    useEffect(() => {
+        fetch(`http://localhost:4000/teachers`)
+            .then(res => res.json())
+            .then(data => setTeachers(data))
+    }, [])
     return (
         <div>
             <Navigation />
+            <div style={{ padding: '10px 20px', backgroundColor: '#eee', borderRadius: '10px', width: '100px' }}><Link to="/attendance-history">History</Link></div>
             <Typography variant="h3" sx={{ m: 2 }}>Attendance </Typography>
             <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <TextField required
@@ -60,7 +68,20 @@ const Attendance = () => {
                         shrink: true,
                     }}
                 />
-                <TextField required name="teacherId" onBlur={onTeacherIdBlur} style={{ width: '75%', marginTop: '18px' }} label="Teacher ID" variant="outlined" />
+
+                <FormControl style={{ width: '75%', marginTop: '18px' }} >
+                    <InputLabel id="demo-simple-select-label">Teacher</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={teacher}
+                        label="Branch"
+                        name="branch"
+                        onChange={onTeacherChange}
+                    >
+                        {teachers.map(teacher => <MenuItem value={teacher.phone}>{teacher.phone?.slice(0, 5) + ' ' + teacher.firstName + ' ' + teacher.lastName}</MenuItem>)}
+                    </Select>
+                </FormControl>
                 <FormControl style={{ width: '75%', marginTop: '18px' }} >
                     <InputLabel id="demo-simple-select-label">Branch</InputLabel>
                     <Select
@@ -83,8 +104,10 @@ const Attendance = () => {
                 <FormControl style={{ width: '75%', marginTop: '18px' }} >
                     {
                         students?.map(student => <>
-                            <input type="checkbox" id={student.id + ''} name={student.id} value={student.id} onChange={checkChange} />
-                            <label for={student.id + ''} style={{ fontSize: '17px', paddingLeft: '20px' }}> ID: {student.id} Name: {student.name}</label>
+                            <div className='d-flex align-items-center'>
+                                <input type="checkbox" id={student.sid + ''} name={student.sid} value={student.sid} onChange={checkChange} style={{ fontSize: '19px', paddingLeft: '20px' }} />
+                                <label for={student.sid + ''} style={{ fontSize: '17px', paddingLeft: '20px' }}> ID: {student.sid} Name: {student.firstName + ' ' + student.lastName}</label>
+                            </div>
                         </>)
                     }
                 </FormControl>

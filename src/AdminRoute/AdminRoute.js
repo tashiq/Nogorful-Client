@@ -2,14 +2,14 @@ import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import { Outlet } from 'react-router-dom';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate } from 'react-router';
 
 const AdminRoute = () => {
     const { user, isLoading } = useAuth();
     const [userDB, setUserDB] = useState([]);
     // const navigate = useNavigate()
     const email = user.email;
-    // console.log(email);
+    console.log(email);
     useEffect(() => {
         fetch(`http://localhost:4000/user/${email}`)
             .then(res => res.json())
@@ -19,7 +19,7 @@ const AdminRoute = () => {
     if (isLoading) {
         return <CircularProgress />
     }
-    else if (!userDB || userDB.role === "member") {
+    else if ((!userDB) || userDB.role === "member") {
         return <Navigate to="/home" />
     }
     else {

@@ -30,15 +30,14 @@ const Student = () => {
     }
 
     const onresize = () => {
-        // console.log(window.innerWidth);
         setWinSize(window.innerWidth);
     }
+    console.log(student);
     window.addEventListener('resize', onresize);
     return (
         <div>
-
             {
-                student.name &&
+                student.firstName &&
                 <div id="stu-profile">
                     <Typography variant="h4" style={{ display: 'inline-block', color: '', backgroundColor: 'white', padding: '10px 20px', borderRadius: '20px' }}>Student Profile</Typography>
                     <div className="main-profile">
@@ -50,16 +49,14 @@ const Student = () => {
                                 <img src={logo} alt="" />
                             </div>}
                         <div className="profile-info">
-                            <Typography variant="h5">Name: {student.name}</Typography>
-                            <Typography variant="body1">Father's Name: {student.father}</Typography>
-                            <Typography variant="body1">Mother's Name: {student.mother}</Typography>
-                            <Typography variant="body1">Parents Occupation: {student.parentsOccupation}</Typography>
-                            <Typography variant="body1">Gender: {student.gender}</Typography>
-                            <Typography variant="body1">School: {student.school}</Typography>
-                            <Typography variant="body1">Class: {student.cls}</Typography>
+                            <Typography variant="h5">Student ID: {student.sid}</Typography>
+                            <Typography variant="body1">First Name: {student.firstName}</Typography>
+                            <Typography variant="body1">Last Name: {student.lastName}</Typography>
+                            <Typography variant="body1">Father's First Name: {student.fatherFirstName}</Typography>
+                            <Typography variant="body1">Father's Last Name: {student.fatherLastName}</Typography>
+                            <Typography variant="body1">Class: {student.class}</Typography>
                             <Typography variant="body1">Branch: {student.branch}</Typography>
-                            <Typography variant="body1">Addmission: {student.addmission.slice(0, 10)}</Typography>
-                            <Typography variant="body1">Address: {student.address}</Typography>
+
                         </div>
                     </div>
 
@@ -69,8 +66,7 @@ const Student = () => {
 
                     <div className="footer-btn">
                         <Button onClick={handleStudentDelete} variant="contained" color="error">Delete</Button>
-                        <Link to={`/dashboard/update/student/${id}`} style={{ textDecoration: 'none' }}>
-                            <Button variant="contained" color="warning">Update</Button></Link>
+                        <Link to={`/update/student/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
                     </div>
                 </div>
             }

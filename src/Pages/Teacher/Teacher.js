@@ -5,6 +5,7 @@ import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import logo from '../../images/banner.png'
 import clipart from '../../images/clipart.png'
+import Navigation from '../Shared/Navigation/Navigation';
 const Teacher = () => {
     const [teacher, setTeacher] = useState({});
     const [winSize, setWinSize] = useState(window.innerWidth);
@@ -24,17 +25,19 @@ const Teacher = () => {
             })
 
     }
+    console.log(teacher);
     const onresize = () => {
-        // console.log(window.innerWidth);
+        console.log(window.innerWidth);
         setWinSize(window.innerWidth);
     }
     window.addEventListener('resize', onresize);
     return (
         <>
+            <Navigation />
             <div>
 
                 {
-                    teacher.name &&
+                    teacher.firstName &&
                     <div id="stu-profile">
                         <Typography variant="h4" style={{ display: 'inline-block', color: '', backgroundColor: 'white', padding: '10px 20px', borderRadius: '20px' }}>Teacher's Profile</Typography>
                         <div className="main-profile">
@@ -47,22 +50,18 @@ const Teacher = () => {
                                 </div>
                             }
                             <div className="profile-info">
-                                <Typography variant="h5">Name: {teacher.name}</Typography>
-                                <Typography variant="body1">ID: {teacher.id}</Typography>
-                                <Typography variant="body1">Phone: {teacher.phone || "Not Provided"}</Typography>
-                                <Typography variant="body1">Email: {teacher.email || "Not Provided"}</Typography>
-                                <Typography variant="body1">Degree: {teacher.degree || "Not Provided"}</Typography>
-                                <Typography variant="body1">Institution: {teacher.institution || "Not Provided"}</Typography>
-                                <Typography variant="body1">Gender: {teacher.gender}</Typography>
+                                <Typography variant="h5">First Name: {teacher.firstName}</Typography>
+                                <Typography variant="body1">Last Name: {teacher.lastName}</Typography>
+                                <Typography variant="body1">Email: {teacher.email}</Typography>
                                 <Typography variant="body1">Address: {teacher.address}</Typography>
-                                <Typography variant="body1">Join Date: {teacher.joined.slice(0, 10)}</Typography>
-                                <Typography variant="body1">Branch: {teacher.branch}</Typography>
+                                <Typography variant="body1">Join date: {teacher.joindate}</Typography>
+
                             </div>
                         </div>
 
                         <div className="footer-btn">
                             <Button onClick={handleTeacherDelete} variant="contained" color="error">Delete</Button>
-                            <Link to={`/dashboard/update/teacher/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
+                            <Link to={`/update/teacher/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
                         </div>
                     </div>
                 }

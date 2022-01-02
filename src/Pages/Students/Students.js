@@ -10,55 +10,51 @@ import axios from 'axios';
 import './Students.css'
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material';
-import Footer from '../Shared/Footer/Footer';
 import Navigation from '../Shared/Navigation/Navigation';
+import Footer from '../Shared/Footer/Footer';
 
 const Students = () => {
-
     const [students, setStudents] = React.useState([])
     React.useEffect(() => {
         axios.get('http://localhost:4000/students')
             .then(result => {
                 setStudents(result.data);
-                // console.log(result.data);
+                console.log(result.data);
             })
     }, [])
     return (
         <>
             <Navigation />
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 600 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Father's Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Mother's Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Class</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">School</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {students?.map((row) => (
-
-                            <TableRow className=""
-                                key={row.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">{row.name}</TableCell>
-                                <TableCell align="right">{row.father}</TableCell>
-                                <TableCell align="right">{row.mother}</TableCell>
-                                <TableCell align="right">{row.branch}</TableCell>
-                                <TableCell align="right">{row.cls}</TableCell>
-                                <TableCell align="right">{row.school}</TableCell>
-                                <TableCell align="left"> <Link to={`/students/${row.id}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
-
-
+            <div className='d-flex justify-content-center'>
+                <TableContainer component={Paper} sx={{ width: 700 }} >
+                    <Table sx={{ width: 700 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ fontWeight: 600 }}>Student ID</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Class</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>Branch</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }}>More</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {students.map((row) => (
+
+                                <TableRow className=""
+                                    key={row.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">{row.sid}</TableCell>
+                                    <TableCell align="left">{row.firstName + ' ' + row.lastName}</TableCell>
+                                    <TableCell align="left">{row.class}</TableCell>
+                                    <TableCell align="left">{row.branch || " "}</TableCell>
+                                    <TableCell align="left"> <Link to={`/students/${row.sid}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Link to={`/dashboard/addstudent`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" sx={{ my: 4 }}>Add A Student</Button>

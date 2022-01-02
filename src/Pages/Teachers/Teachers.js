@@ -7,10 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
+import Navigation from '../../Pages/Shared/Navigation/Navigation'
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material';
 import Footer from '../Shared/Footer/Footer';
-import Navigation from '../Shared/Navigation/Navigation';
 
 const Teachers = () => {
 
@@ -21,40 +21,39 @@ const Teachers = () => {
                 setTeachers(result.data);
             })
     }, [])
+    console.log(teachers);
     return (
         <>
             <Navigation />
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 600 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">ID</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Degree</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Institution</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Join Date</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {teachers.map((row) => (
-
-                            <TableRow className=""
-                                key={row.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">{row.name}</TableCell>
-                                <TableCell align="right">{row.id}</TableCell>
-                                <TableCell align="right">{row.degree}</TableCell>
-                                <TableCell align="right">{row.institution}</TableCell>
-                                <TableCell align="right">{row.branch}</TableCell>
-                                <TableCell align="right">{row.joined.slice(0, 10)}</TableCell>
-                                <TableCell align="left"> <Link to={`/teachers/${row.id}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
+            <div className="d-flex justify-content-center my-2">
+                <TableContainer component={Paper} sx={{ width: 700 }} >
+                    <Table sx={{ width: 700 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ fontWeight: 600 }} align="right">Name</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="right">Email</TableCell>
+                                <TableCell sx={{ fontWeight: 600 }} align="right">Address</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {teachers.map((row) => (
+
+                                <TableRow className=""
+                                    key={row.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell align="right" component="th" scope="row">{row.firstName + ' ' + row.lastName}</TableCell>
+                                    <TableCell align="right">{row.email}</TableCell>
+                                    <TableCell align="right">{row.address}</TableCell>
+                                    <TableCell align="right"> <Link to={`/teachers/${row.phone}`} style={{ textDecoration: 'none' }}><Button>More</Button></Link> </TableCell>
+
+
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Link to={`/dashboard/addteacher`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" sx={{ my: 4 }}>Add A Teacher</Button>

@@ -9,33 +9,21 @@ import { Link } from 'react-router-dom';
 const SignIn = () => {
     const FirstNameRef = useRef();
     const LastNameRef = useRef();
-    const PhoneRef = useRef();
     const EmailRef = useRef();
-    const AdressRef = useRef();
-    const EducationRef = useRef();
-    const JoinRef = useRef();
     const PassRef = useRef();
     const { createUser, googleSignIn } = useAuth();
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         const FirstName = FirstNameRef.current.value;
         const LastName = LastNameRef.current.value;
-        const Phone = PhoneRef.current.value;
         const Email = EmailRef.current.value;
-        const Adress = AdressRef.current.value;
-        const Education = EducationRef.current.value;
-        const Join = JoinRef.current.value;
         const Pass = PassRef.current.value;
         createUser(Email, Pass, FirstName, navigate);
 
         const newMember = {
-            FirstName,
-            LastName,
-            Phone,
-            Email,
-            Adress,
-            Education,
-            Join
+            firstName: FirstName,
+            lastName: LastName,
+            email: Email,
         }
         fetch('http://localhost:4000/newuser', {
             method: 'POST',
@@ -47,7 +35,6 @@ const SignIn = () => {
             .then(res => console.log(res.data))
 
         e.preventDefault();
-        e.target.reset();
     }
     return (
         <>
@@ -59,13 +46,9 @@ const SignIn = () => {
                             <legend><span className="text-info fw-bolder fs-2">Please Resgister</span></legend>
                             <input type="text" className="form-control mb-2" ref={FirstNameRef} required placeholder="First Name" id="" />
                             <input type="text" className="form-control mb-2" ref={LastNameRef} required placeholder="Last Name" id="" />
-                            <input type="text" className="form-control mb-2" ref={PhoneRef} required placeholder="Phone" id="" />
-                            <input type="text" className="form-control mb-2" ref={AdressRef} required placeholder="Address" id="" />
-                            <input type="text" className="form-control mb-2" ref={EducationRef} required placeholder="Highest Education" />
-                            <input type="date" className="form-control mb-2" ref={JoinRef} required placeholder="Join Date" id="" />
                             <input type="email" className="form-control mb-2" ref={EmailRef} required placeholder="Email" id="" />
                             <input type="password" className="form-control mb-2" ref={PassRef} required placeholder="Password" id="" />
-                            <button type="submit" className="btn btn-success">SUBMIT</button>
+                            <button type="submit" className="btn btn-success" onClick={handleSubmit}>SUBMIT</button>
                         </fieldset>
                     </form>
                 </div>

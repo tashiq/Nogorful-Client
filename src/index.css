@@ -16,3 +16,28 @@ code {
   z-index: 100;
   color: white;
 }
+.add{
+  height: 44px;
+  overflow: visible;
+}
+.add-hover{
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  left: 20px;
+  top: 45px;
+  background-color: rgb(236, 238, 240);
+}
+.add:hover .add-hover{
+  display: block;
+}
+#msg{
+  width: 500px;
+  background-color: rgb(8, 223, 8);
+  color: rgb(224, 228, 212);
+  padding: 10px 20px;
+  border: 1px solid blue;
+  border-radius: 15px;
+  display: none;
+  font-size: 20px;
+}
