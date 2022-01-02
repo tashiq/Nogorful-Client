@@ -7,6 +7,8 @@ import clipart from '../../images/clipart.png'
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom'
+import Navigation from '../Shared/Navigation/Navigation';
+import Footer from '../Shared/Footer/Footer';
 const Student = () => {
     const { id } = useParams();
     const [student, setStudent] = useState({})
@@ -56,9 +58,8 @@ const Student = () => {
                             <Typography variant="body1">Father's Last Name: {student.fatherLastName}</Typography>
                             <Typography variant="body1">Class: {student.class}</Typography>
                             <Typography variant="body1">Branch: {student.branch}</Typography>
-
-                        </div>
-                    </div>
+                        </div >
+                    </div >
 
                     <div className="footer-text">
                         They are not street-child they are nogorful
@@ -68,9 +69,10 @@ const Student = () => {
                         <Button onClick={handleStudentDelete} variant="contained" color="error">Delete</Button>
                         <Link to={`/update/student/${id}`} style={{ textDecoration: 'none' }}><Button variant="contained" color="warning">Update</Button></Link>
                     </div>
-                </div>
+                </div >
             }
-        </div>
+            <Footer />
+        </div >
 
     );
 };

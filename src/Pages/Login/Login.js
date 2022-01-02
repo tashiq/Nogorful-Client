@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router';
 const Login = () => {
     const passRef = useRef();
     const emailRef = useRef();
-    const { emailSignIn } = useAuth();
+    const { emailSignIn, error } = useAuth();
     const location = useLocation();
     // console.log(location);
     const navigate = useNavigate();
@@ -15,6 +15,9 @@ const Login = () => {
         const Pass = passRef.current.value;
         const Email = emailRef.current.value;
         emailSignIn(Email, Pass, location, navigate);
+        if (error) {
+            alert(error)
+        }
         e.preventDefault();
         e.target.reset();
     }

@@ -15,6 +15,7 @@ const Teacher = () => {
         axios.get(`http://localhost:4000/teachers/${id}`)
             .then(response => setTeacher(response.data))
     }, [id])
+    console.log(teacher)
     const handleTeacherDelete = () => {
         fetch(`http://localhost:4000/teachers/${id}`, { method: 'DELETE' })
             .then(res => res.json())

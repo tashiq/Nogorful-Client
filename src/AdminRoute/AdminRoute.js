@@ -7,14 +7,14 @@ import { Navigate } from 'react-router';
 const AdminRoute = () => {
     const { user, isLoading } = useAuth();
     const [userDB, setUserDB] = useState([]);
-    // const navigate = useNavigate()
     const email = user.email;
     console.log(email);
     useEffect(() => {
-        fetch(`http://localhost:4000/user/${email}`)
+        fetch(`http://localhost:4000/teachers?email=${email}`)
             .then(res => res.json())
             .then(data => setUserDB(data[0]))
     }, [email])
+    console.log(userDB);
     // console.log(userDB);
     if (isLoading) {
         return <CircularProgress />
