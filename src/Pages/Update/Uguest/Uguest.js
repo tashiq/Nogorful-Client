@@ -13,7 +13,7 @@ const Uguest = () => {
             .then(res => res.json())
             .then(data => setGuest(data[0]))
     }, [phone])
-    console.log(guest);
+    //console.log(guest);
     const handleAddguest = e => {
         axios.put(`http://localhost:4000/guest/${phone}`, guest)
             .then(res => {

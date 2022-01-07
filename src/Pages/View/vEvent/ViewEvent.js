@@ -16,7 +16,7 @@ const ViewEvent = () => {
             .then(data => setEvent(data))
         setDel(false)
     }, [del])
-    console.log(event);
+    //console.log(event);
     const handleDelete = name => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {

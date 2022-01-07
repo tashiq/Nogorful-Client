@@ -19,7 +19,7 @@ const Students = () => {
         axios.get('http://localhost:4000/students')
             .then(result => {
                 setStudents(result.data);
-                console.log(result.data);
+                //console.log(result.data);
             })
     }, [])
     return (
@@ -40,8 +40,7 @@ const Students = () => {
                         <TableBody>
                             {students.map((row) => (
 
-                                <TableRow className=""
-                                    key={row.id}
+                                <TableRow key={row.sid}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">{row.sid}</TableCell>

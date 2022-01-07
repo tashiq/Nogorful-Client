@@ -11,7 +11,7 @@ const AttendanceHistory = () => {
             .then(res => res.json())
             .then(data => setHistory(data))
     }, [])
-    console.log(history);
+    //console.log(history);
     return (
         <div>
             <Navigation />
@@ -30,7 +30,7 @@ const AttendanceHistory = () => {
                         {history.map((row) => (
 
                             <TableRow className=""
-                                key={row.id}
+                                key={row.sid}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="right" component="th" scope="row">{row.sid}</TableCell>

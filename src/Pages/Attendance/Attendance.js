@@ -33,7 +33,7 @@ const Attendance = () => {
     }
     const submitAttendance = e => {
         const newData = { students: checked, phone: teacher, date }
-        console.log(newData);
+        //console.log(newData);
         axios.post('http://localhost:4000/attendance', newData)
             .then(res => {
 
@@ -104,9 +104,9 @@ const Attendance = () => {
                 <FormControl style={{ width: '75%', marginTop: '18px' }} >
                     {
                         students?.map(student => <>
-                            <div className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center' key={student.sid}>
                                 <input type="checkbox" id={student.sid + ''} name={student.sid} value={student.sid} onChange={checkChange} style={{ fontSize: '19px', paddingLeft: '20px' }} />
-                                <label for={student.sid + ''} style={{ fontSize: '17px', paddingLeft: '20px' }}> ID: {student.sid} Name: {student.firstName + ' ' + student.lastName}</label>
+                                <label htmlFor={student.sid + ''} style={{ fontSize: '17px', paddingLeft: '20px' }}> ID: {student.sid} Name: {student.firstName + ' ' + student.lastName}</label>
                             </div>
                         </>)
                     }

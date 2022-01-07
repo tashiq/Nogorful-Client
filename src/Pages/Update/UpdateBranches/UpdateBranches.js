@@ -9,13 +9,13 @@ const UpdateBranches = () => {
     const navigate = useNavigate();
 
     // get a student by that id.
-    // console.log(id);
+    // //console.log(id);
     useEffect(() => {
         fetch(`http://localhost:4000/branches/${id}`)
             .then(response => response.json())
             .then(data => setPrevInfo(data))
     }, [id]);
-    // console.log(prevInfo);
+    // //console.log(prevInfo);
     const handleUpdateBranchBlur = e => {
         const type = e.target.name;
         const value = e.target.value;

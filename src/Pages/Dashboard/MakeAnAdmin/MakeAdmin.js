@@ -6,7 +6,7 @@ const MakeAdmin = () => {
     // const emailRef = useRef();
     const [email, setEmail] = useState('')
     const adminSubmit = e => {
-        // console.log();
+        // //console.log();
         fetch(`http://localhost:4000/admin?email=${email}`, {
             method: 'PUT',
             headers: {
@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                // //console.log(data);
             })
         e.preventDefault();
         navigate('/dashboard');

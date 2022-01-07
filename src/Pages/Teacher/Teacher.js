@@ -15,7 +15,7 @@ const Teacher = () => {
         axios.get(`http://localhost:4000/teachers/${id}`)
             .then(response => setTeacher(response.data))
     }, [id])
-    console.log(teacher)
+    //console.log(teacher)
     const handleTeacherDelete = () => {
         fetch(`http://localhost:4000/teachers/${id}`, { method: 'DELETE' })
             .then(res => res.json())
@@ -26,9 +26,9 @@ const Teacher = () => {
             })
 
     }
-    console.log(teacher);
+    //console.log(teacher);
     const onresize = () => {
-        console.log(window.innerWidth);
+        //console.log(window.innerWidth);
         setWinSize(window.innerWidth);
     }
     window.addEventListener('resize', onresize);

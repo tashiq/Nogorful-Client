@@ -12,7 +12,7 @@ const Vguest = () => {
             .then(data => setEvents(data))
         setDel(false)
     }, [del])
-    console.log(events);
+    //console.log(events);
     const handleDelete = phone => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {

@@ -9,7 +9,7 @@ const Vevents = () => {
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])
-    console.log(events);
+    //console.log(events);
     return (
         <div>
             <TableContainer component={Paper} sx={{ minWidth: 700 }} >

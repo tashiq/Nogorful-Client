@@ -14,7 +14,7 @@ const AddEvent = () => {
         setAddEventData(newInfo);
     }
     const handleAddEventSubmit = e => {
-        // console.log(addEventData, guestData);
+        // //console.log(addEventData, guestData);
         axios.post('http://localhost:4000/event', addEventData)
             .then(response => {
                 if (response.data.errno) {

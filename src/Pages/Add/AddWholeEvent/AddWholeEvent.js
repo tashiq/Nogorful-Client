@@ -58,7 +58,7 @@ const AddWholeEvent = () => {
         const sent = { guests: guestData, eventData }
         axios.post('http://localhost:4000/events', sent)
             .then(response => {
-                console.log(response);
+                //console.log(response);
             })
     }
     return (

@@ -5,52 +5,57 @@ import useAuth from '../../../Hooks/useAuth'
 // import { Typography } from '@mui/material';
 import logoImg from '../../../images/banner.png'
 import { Link } from 'react-router-dom';
+const navItems = document.querySelectorAll('.nav-item');
+// console.log(navItems);
 const Navigation = () => {
+    function activePass() {
+        console.log('hello');
+    }
+    // console.log(navItems);
+    for (let i = 0; i < navItems.length; i++) {
+        // console.log(navItems[i]);
+        navItems[i].addEventListener('click', activePass);
+    }
     const { logOut, user } = useAuth();
     return (
-        <nav className="navbar navbar-expand-lg navbar-light p-3 bg-light">
-            <div className="container-fluid">
-                <a class="navbar-brand" href>
+        <header>
+            <nav id='nav'>
+                <a className="navbar-brand fs-3 fw-bolder" href="/home" style={{ color: 'black', display: 'flex', alignItems: 'center' }}>
                     <img src={logoImg} alt="" width="50" />
+                    <span style={{ display: 'inline-block', padding: '0 20px' }}>Nogorful</span>
                 </a>
-                <a className="navbar-brand fs-3 fw-bolder" href="/home">Nogorful</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <HashLink className="navitem" to="/home">Home</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/students'>Students</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/teachers'>Teachers</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/attendance'>Attendance</HashLink>
-                        </li>
-                        <li className="nav-item">
-                            <HashLink className="navitem" to='/dashboard'>Dashboard</HashLink>
-                        </li>
-                        {
-                            user.email ?
-                                <li className="nav-item" onClick={logOut}>
-                                    <Link to="/home" className="navitem">Log Out({user.displayName})</Link>
-                                </li>
-                                :
-                                <li className="nav-item">
-                                    <HashLink className="navitem" to='/login'>Login</HashLink>
-                                </li>
-                        }
+                <ul>
+                    <li className="nav-item active">
+                        <HashLink className="navitem" to="/home"><span className='nav-item-icon'><i className="fas fa-igloo"></i></span><span className='nav-item-text'>Home</span></HashLink>
+                    </li>
+                    <li className="nav-item ">
+                        <HashLink className="navitem" to='/students'><span className='nav-item-icon'><i className="fas fa-graduation-cap"></i></span><span className='nav-item-text'>Students</span></HashLink>
+                    </li>
+                    <li className="nav-item">
+                        <HashLink className="navitem" to='/teachers'><span className='nav-item-icon'><i className="fas fa-chalkboard-teacher"></i></span><span className='nav-item-text'>Teachers</span></HashLink>
+                    </li>
+                    <li className="nav-item">
+                        <HashLink className="navitem" to='/attendance'><span className='nav-item-icon'><i className="fas fa-school"></i></span><span className='nav-item-text'>Attendance</span></HashLink>
+                    </li>
+                    <li className="nav-item">
+                        <HashLink className="navitem" to='/dashboard'><span className='nav-item-icon'><i className="fas fa-user-shield"></i></span><span className='nav-item-text'>Dashboard</span></HashLink>
+                    </li>
+                    {
+                        user.email ?
+                            <li className="nav-item" onClick={logOut}>
+                                <Link to="/home" className="navitem"><span className='nav-item-icon'><i className="fas fa-sign-out-alt"></i></span><span className='nav-item-text'>Log Out({user.displayName})</span></Link>
+                            </li>
+                            :
+                            <li className="nav-item">
+                                <HashLink className="navitem" to='/login'><span className='nav-item-icon'><i className="fas fa-sign-in-alt"></i></span><span className='nav-item-text'>Login</span></HashLink>
+                            </li>
+                    }
 
+                    <div className="indicator"></div>
+                </ul>
 
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     );
 };
 

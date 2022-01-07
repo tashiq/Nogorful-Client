@@ -30,7 +30,7 @@ const Donors = () => {
                 })
         }
     }
-    console.log(children);
+    //console.log(children);
     return (
         <div>
             <TableContainer component={Paper} sx={{ width: 700 }} >

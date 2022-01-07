@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { useLocation } from 'react-router';
 const PrivateRoute = () => {
     const location = useLocation();
-    console.log(location);
+    //console.log(location);
     const { user, isLoading } = useAuth()
     if (isLoading) {
         return <CircularProgress />

@@ -12,7 +12,7 @@ const Branches = ({ children }) => {
             .then(data => setBranches(data))
 
     }, [])
-    console.log(branches);
+    //console.log(branches);
     return (
         <Container id="branches">
             <Typography variant="h4" sx={{ fontWeight: 600, my: 3, color: '#363d6b' }}>Branches</Typography>

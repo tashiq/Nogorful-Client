@@ -34,7 +34,7 @@ const Student = () => {
     const onresize = () => {
         setWinSize(window.innerWidth);
     }
-    console.log(student);
+    //console.log(student);
     window.addEventListener('resize', onresize);
     return (
         <div>

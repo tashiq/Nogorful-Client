@@ -9,7 +9,7 @@ const Login = () => {
     const emailRef = useRef();
     const { emailSignIn, error } = useAuth();
     const location = useLocation();
-    // console.log(location);
+    // //console.log(location);
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         const Pass = passRef.current.value;

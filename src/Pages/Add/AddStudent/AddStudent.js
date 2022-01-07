@@ -7,22 +7,22 @@ const AddStudent = () => {
     const navigate = useNavigate()
     const handleAddStuBlur = e => {
         const type = e.target.name;
-        // console.log(addStuData);
+        // //console.log(addStuData);
         const value = e.target.value;
         const newInfo = { ...addStuData };
         newInfo[type] = value;
         setAddStuData(newInfo);
     }
     const handleAddStuSubmit = e => {
-        // console.log(addStuData);
+        // //console.log(addStuData);
         axios.post('http://localhost:4000/students', addStuData)
             .then(response => {
-                // console.log(response);
+                // //console.log(response);
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)
                 }
                 else if (response) {
-                    console.log(response);
+                    //console.log(response);
                     alert('Insertion Successful');
                     navigate('/students')
 

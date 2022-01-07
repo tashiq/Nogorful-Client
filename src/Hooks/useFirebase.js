@@ -45,7 +45,7 @@ const useFirebase = () => {
             .then(result => {
                 setUser(result.user);
                 const whereTo = location?.state?.from?.pathname || '/home';
-                // console.log(whereTo);
+                // //console.log(whereTo);
                 navigate(whereTo);
             })
             .catch(err => setError(err.code))

@@ -9,7 +9,7 @@ const AddOCOD = () => {
     const handleOcodSubmit = e => {
         axios.post('http://localhost:4000/donor', donor)
             .then(response => {
-                // console.log(response);
+                // //console.log(response);
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)
                 }

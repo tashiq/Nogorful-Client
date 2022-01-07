@@ -21,7 +21,7 @@ const Teachers = () => {
                 setTeachers(result.data);
             })
     }, [])
-    console.log(teachers);
+    //console.log(teachers);
     return (
         <>
             <Navigation />
@@ -39,7 +39,7 @@ const Teachers = () => {
                             {teachers.map((row) => (
 
                                 <TableRow className=""
-                                    key={row.id}
+                                    key={row.phone}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell align="right" component="th" scope="row">{row.firstName + ' ' + row.lastName}</TableCell>

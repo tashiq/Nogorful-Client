@@ -11,10 +11,10 @@ const AddTeacher = () => {
         const newInfo = { ...addStuData };
         newInfo[type] = value;
         setAddStuData(newInfo);
-        console.log(addStuData);
+        //console.log(addStuData);
     }
     const handleAddStuSubmit = e => {
-        // console.log(addStuData);
+        // //console.log(addStuData);
         axios.post('http://localhost:4000/teachers', addStuData)
             .then(response => {
                 if (response.data.errno) {

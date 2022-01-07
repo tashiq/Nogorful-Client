@@ -21,7 +21,7 @@ const AttendanceDetails = () => {
         setSearch(e.target.value);
     }
     const handleChange = (event) => {
-        // console.log(event.target.value);
+        // //console.log(event.target.value);
         setType(event.target.value);
     };
     const handleDate = e => {
