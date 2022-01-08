@@ -16,7 +16,7 @@ const Teachers = () => {
 
     const [teachers, setTeachers] = React.useState([])
     React.useEffect(() => {
-        axios.get('http://localhost:4000/teachers')
+        axios.get('https://frozen-dawn-59766.herokuapp.com/teachers')
             .then(result => {
                 setTeachers(result.data);
             })

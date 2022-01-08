@@ -12,7 +12,7 @@ const UpdateTeacher = () => {
     // get a student by that id.
 
     useEffect(() => {
-        fetch(`http://localhost:4000/teachers/${id}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/teachers/${id}`)
             .then(response => response.json())
             .then(data => setPrevInfo(data))
     }, []);
@@ -24,7 +24,7 @@ const UpdateTeacher = () => {
         setPrevInfo(newInfo);
     }
     const handleUpdateTeachersSubmit = e => {
-        axios.put(`http://localhost:4000/teachers/${id}`, prevInfo)
+        axios.put(`https://frozen-dawn-59766.herokuapp.com/teachers/${id}`, prevInfo)
             .then(response => {
                 if (response.data.affectedRows) {
                     alert("Update Operation Successful");

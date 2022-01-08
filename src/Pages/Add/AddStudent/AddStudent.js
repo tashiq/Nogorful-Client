@@ -15,7 +15,7 @@ const AddStudent = () => {
     }
     const handleAddStuSubmit = e => {
         // //console.log(addStuData);
-        axios.post('http://localhost:4000/students', addStuData)
+        axios.post('https://frozen-dawn-59766.herokuapp.com/students', addStuData)
             .then(response => {
                 // //console.log(response);
                 if (response.data.errno) {

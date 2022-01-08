@@ -7,7 +7,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const AttendanceHistory = () => {
     const [history, setHistory] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:4000/attendance')
+        fetch('https://frozen-dawn-59766.herokuapp.com/attendance')
             .then(res => res.json())
             .then(data => setHistory(data))
     }, [])

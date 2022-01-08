@@ -7,7 +7,7 @@ const AddOCOD = () => {
     const [donor, setDonor] = useState({})
 
     const handleOcodSubmit = e => {
-        axios.post('http://localhost:4000/donor', donor)
+        axios.post('https://frozen-dawn-59766.herokuapp.com/donor', donor)
             .then(response => {
                 // //console.log(response);
                 if (response.data.errno) {
@@ -22,7 +22,7 @@ const AddOCOD = () => {
         e.preventDefault();
     }
     const handleChild = e => {
-        axios.post('http://localhost:4000/child', { ...child, dPhone: donor.phone })
+        axios.post('https://frozen-dawn-59766.herokuapp.com/child', { ...child, dPhone: donor.phone })
             .then(response => {
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)

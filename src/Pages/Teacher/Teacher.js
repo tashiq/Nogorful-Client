@@ -12,12 +12,12 @@ const Teacher = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     useEffect(() => {
-        axios.get(`http://localhost:4000/teachers/${id}`)
+        axios.get(`https://frozen-dawn-59766.herokuapp.com/teachers/${id}`)
             .then(response => setTeacher(response.data))
     }, [id])
     //console.log(teacher)
     const handleTeacherDelete = () => {
-        fetch(`http://localhost:4000/teachers/${id}`, { method: 'DELETE' })
+        fetch(`https://frozen-dawn-59766.herokuapp.com/teachers/${id}`, { method: 'DELETE' })
             .then(res => res.json())
             .then(data => {
                 if (data.affectedRows) {

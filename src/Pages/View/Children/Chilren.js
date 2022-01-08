@@ -9,14 +9,14 @@ const Chilren = () => {
     const [events, setEvents] = useState({});
     const [children, setChildren] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:4000/ocod')
+        fetch('https://frozen-dawn-59766.herokuapp.com/ocod')
             .then(res => res.json())
             .then(data => setChildren(data))
     }, [del])
     const handleDelete = id => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {
-            axios.delete(`http://localhost:4000/child/${id}`)
+            axios.delete(`https://frozen-dawn-59766.herokuapp.com/child/${id}`)
                 .then(res => {
                     if (res.data.errno) {
                         alert(res.data.sqlMessage)

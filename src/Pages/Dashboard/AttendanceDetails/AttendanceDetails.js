@@ -28,7 +28,7 @@ const AttendanceDetails = () => {
         setDate(e.target.value)
     }
     useEffect(() => {
-        fetch(`http://localhost:4000/attendance?${type}=${search}&&date=${date}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/attendance?${type}=${search}&&date=${date}`)
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [search, type, date])

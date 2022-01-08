@@ -34,7 +34,7 @@ const Attendance = () => {
     const submitAttendance = e => {
         const newData = { students: checked, phone: teacher, date }
         //console.log(newData);
-        axios.post('http://localhost:4000/attendance', newData)
+        axios.post('https://frozen-dawn-59766.herokuapp.com/attendance', newData)
             .then(res => {
 
             })
@@ -42,12 +42,12 @@ const Attendance = () => {
         e.preventDefault();
     }
     useEffect(() => {
-        fetch(`http://localhost:4000/students?branch=${branch}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/students?branch=${branch}`)
             .then(res => res.json())
             .then(data => setStudents(data))
     }, [branch])
     useEffect(() => {
-        fetch(`http://localhost:4000/teachers`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/teachers`)
             .then(res => res.json())
             .then(data => setTeachers(data))
     }, [])

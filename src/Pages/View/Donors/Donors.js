@@ -8,7 +8,7 @@ const Donors = () => {
     const [events, setEvents] = useState([]);
     const [del, setDel] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:4000/donor')
+        fetch('https://frozen-dawn-59766.herokuapp.com/donor')
             .then(res => res.json())
             .then(data => setChildren(data))
         setDel(false)
@@ -16,7 +16,7 @@ const Donors = () => {
     const handleDelete = phone => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {
-            axios.delete(`http://localhost:4000/donor/${phone}`)
+            axios.delete(`https://frozen-dawn-59766.herokuapp.com/donor/${phone}`)
                 .then(res => {
                     if (res.data.errno) {
                         alert(res.data.sqlMessage)

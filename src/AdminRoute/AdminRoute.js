@@ -10,7 +10,7 @@ const AdminRoute = () => {
     const email = user.email;
     //console.log(email);
     useEffect(() => {
-        fetch(`http://localhost:4000/teachers?email=${email}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/teachers?email=${email}`)
             .then(res => res.json())
             .then(data => setUserDB(data[0]))
     }, [email])

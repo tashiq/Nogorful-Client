@@ -15,7 +15,7 @@ const AddEvent = () => {
     }
     const handleAddEventSubmit = e => {
         // //console.log(addEventData, guestData);
-        axios.post('http://localhost:4000/event', addEventData)
+        axios.post('https://frozen-dawn-59766.herokuapp.com/event', addEventData)
             .then(response => {
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)

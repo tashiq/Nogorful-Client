@@ -11,7 +11,7 @@ const ViewEvent = () => {
     const [event, setEvent] = useState([]);
     const [del, setDel] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:4000/event')
+        fetch('https://frozen-dawn-59766.herokuapp.com/event')
             .then(res => res.json())
             .then(data => setEvent(data))
         setDel(false)
@@ -20,7 +20,7 @@ const ViewEvent = () => {
     const handleDelete = name => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {
-            axios.delete(`http://localhost:4000/event/${name}`)
+            axios.delete(`https://frozen-dawn-59766.herokuapp.com/event/${name}`)
                 .then(res => {
                     if (res.data.errno) {
                         alert(res.data.sqlMessage)

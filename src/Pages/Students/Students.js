@@ -16,7 +16,7 @@ import Footer from '../Shared/Footer/Footer';
 const Students = () => {
     const [students, setStudents] = React.useState([])
     React.useEffect(() => {
-        axios.get('http://localhost:4000/students')
+        axios.get('https://frozen-dawn-59766.herokuapp.com/students')
             .then(result => {
                 setStudents(result.data);
                 //console.log(result.data);

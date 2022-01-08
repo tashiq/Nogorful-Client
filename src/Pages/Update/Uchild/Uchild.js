@@ -8,13 +8,13 @@ const Uchild = () => {
     const { id } = useParams();
     const [child, setChild] = useState();
     useEffect(() => {
-        fetch(`http://localhost:4000/child/${id}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/child/${id}`)
             .then(res => res.json())
             .then(data => setChild(data[0]))
     }, [id])
 
     const handleOcodSubmit = e => {
-        axios.put(`http://localhost:4000/child/${id}`, child)
+        axios.put(`https://frozen-dawn-59766.herokuapp.com/child/${id}`, child)
             .then(res => {
                 if (res.data.affectedRows) {
                     alert('Successful')

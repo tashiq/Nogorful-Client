@@ -7,12 +7,12 @@ const Uevent = () => {
     const { name } = useParams();
     const [event, setEvent] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:4000/event/${name}`)
+        fetch(`https://frozen-dawn-59766.herokuapp.com/event/${name}`)
             .then(res => res.json())
             .then(data => setEvent(data[0]))
     }, [name])
     const handleAddEventSubmit = e => {
-        axios.put(`http://localhost:4000/event/${name}`, event)
+        axios.put(`https://frozen-dawn-59766.herokuapp.com/event/${name}`, event)
             .then(res => {
                 if (res.data.errno) {
                     alert(res.data.sqlMessage);

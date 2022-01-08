@@ -7,7 +7,7 @@ const Vguest = () => {
     const [events, setEvents] = useState([]);
     const [del, setDel] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:4000/guests')
+        fetch('https://frozen-dawn-59766.herokuapp.com/guests')
             .then(res => res.json())
             .then(data => setEvents(data))
         setDel(false)
@@ -16,7 +16,7 @@ const Vguest = () => {
     const handleDelete = phone => {
         const ans = window.confirm('Do you wanna delete?');
         if (ans) {
-            axios.delete(`http://localhost:4000/guests/${phone}`)
+            axios.delete(`https://frozen-dawn-59766.herokuapp.com/guests/${phone}`)
                 .then(res => {
                     //  ?  : alert('Successful')
                     if (res.data.errno) {
