@@ -135,6 +135,7 @@ function Dashboard(props) {
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                 }}
+                style={{ height: '65px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
                 <Toolbar>
                     <IconButton

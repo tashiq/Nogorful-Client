@@ -3,8 +3,8 @@
 }
 header{
    background-color: var(--clr);
-   height: 110px;
-   padding-top: 28px;
+   height: 120px;
+   padding-top: 38px;
 }
 #nav{
     display: flex;
@@ -29,7 +29,7 @@ header{
     align-items: center;
     justify-content: center;
 }
-#nav ul li ~ .indicator{
+#nav ul li a ~ .indicator{
     position: absolute;
     width: 50px;
     height: 50px;
@@ -40,7 +40,7 @@ header{
     border-radius: 50%;
     transition: transform .5s;
 }
-#nav ul li ~ .indicator::before{
+#nav ul li a ~ .indicator::before{
     content: '';
     width: 20px;
     height: 20px;
@@ -51,7 +51,7 @@ header{
     box-shadow: 0 -5px var(--clr);
     background-color: transparent;
 }
-#nav ul li ~ .indicator::after{
+#nav ul li a ~ .indicator::after{
     content: '';
     width: 20px;
     height: 20px;
@@ -80,8 +80,8 @@ header{
     transition: transform .4s;
     z-index: 5;
 }
-#nav ul li.active a .nav-item-icon{
-    transform: translateY(-35px); 
+#nav ul li a.active .nav-item-icon{
+    transform: translateY(-50px); 
     color:white;  
 }
 #nav ul li a .nav-item-text{
@@ -92,25 +92,25 @@ header{
     position: absolute;
 
 }
-#nav ul li.active a .nav-item-text{
-    transform: translateY(15px);
+#nav ul li a.active .nav-item-text{
+    transform: translateY(0px);
     opacity: 1;
 }
-#nav ul li:nth-child(1).active ~ .indicator{
+#nav ul li:nth-child(1) a ~ .indicator{
     transform: translateX(calc(90px*0));
 }
-#nav ul li:nth-child(2).active ~ .indicator{
+#nav ul li:nth-child(2) a ~ .indicator{
     transform: translateX(calc(90px*1));
 }
-#nav ul li:nth-child(3).active ~ .indicator{
+#nav ul li:nth-child(3) a ~ .indicator{
     transform: translateX(calc(90px*2));
 }
-#nav ul li:nth-child(4).active ~ .indicator{
+#nav ul li:nth-child(4) a ~ .indicator{
     transform: translateX(calc(90px*3));
 }
-#nav ul li:nth-child(5).active ~ .indicator{
+#nav ul li:nth-child(5) a ~ .indicator{
     transform: translateX(calc(90px*4));
 }
-#nav ul li:nth-child(6).active ~ .indicator{
+#nav ul li:nth-child(6) a ~ .indicator{
     transform: translateX(calc(90px*5));
 }

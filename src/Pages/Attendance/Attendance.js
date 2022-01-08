@@ -79,7 +79,7 @@ const Attendance = () => {
                         name="branch"
                         onChange={onTeacherChange}
                     >
-                        {teachers.map(teacher => <MenuItem value={teacher.phone}>{teacher.phone?.slice(0, 5) + ' ' + teacher.firstName + ' ' + teacher.lastName}</MenuItem>)}
+                        {teachers.map(teacher => <MenuItem value={teacher.phone} key={teacher.phone}>{teacher.phone?.slice(0, 5) + ' ' + teacher.firstName + ' ' + teacher.lastName}</MenuItem>)}
                     </Select>
                 </FormControl>
                 <FormControl style={{ width: '75%', marginTop: '18px' }} >
