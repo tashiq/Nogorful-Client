@@ -14,7 +14,7 @@ const AddBranch = () => {
     }
     const handleAddBranchSubmit = e => {
         // //console.log(addBranchData);
-        axios.post('https://frozen-dawn-59766.herokuapp.com/branches', addBranchData)
+        axios.post('http://localhost:4000/branches', addBranchData)
             .then(response => {
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)

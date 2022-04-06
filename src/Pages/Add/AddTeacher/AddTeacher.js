@@ -11,11 +11,11 @@ const AddTeacher = () => {
         const newInfo = { ...addStuData };
         newInfo[type] = value;
         setAddStuData(newInfo);
-        //console.log(addStuData);
+        console.log(addStuData);
     }
     const handleAddStuSubmit = e => {
         // //console.log(addStuData);
-        axios.post('https://frozen-dawn-59766.herokuapp.com/teachers', addStuData)
+        axios.post('http://localhost:4000/teachers', addStuData)
             .then(response => {
                 if (response.data.errno) {
                     alert(response.data.sqlMessage)
@@ -32,7 +32,7 @@ const AddTeacher = () => {
         <Container>
             <Typography variant="h3" sx={{ my: 3 }}>Add a Teacher</Typography>
             <form onSubmit={handleAddStuSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <TextField required onBlur={handleAddTeacherBlur} style={{ width: '75%', marginTop: '18px' }} label="First Name" variant="outlined" />
+                <TextField required name='firstName' onBlur={handleAddTeacherBlur} style={{ width: '75%', marginTop: '18px' }} label="First Name" variant="outlined" />
                 <TextField required name="lastName" onBlur={handleAddTeacherBlur} style={{ width: '75%', marginTop: '18px' }} label="Last Name" variant="outlined" />
                 <TextField name="phone" onBlur={handleAddTeacherBlur} style={{ width: '75%', marginTop: '18px' }} label="Phone Number" variant="outlined" />
                 <TextField name="email" onBlur={handleAddTeacherBlur} style={{ width: '75%', marginTop: '18px' }} label="Email" variant="outlined" />

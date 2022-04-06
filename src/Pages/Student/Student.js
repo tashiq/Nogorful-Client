@@ -16,13 +16,13 @@ const Student = () => {
     const [winSize, setWinSize] = useState(window.innerWidth);
 
     useEffect(() => {
-        axios.get(`https://frozen-dawn-59766.herokuapp.com/students/${id}`)
+        axios.get(`http://localhost:4000/students/${id}`)
             .then(response => setStudent(response.data))
             .catch(err => alert(err))
 
     }, [id])
     const handleStudentDelete = () => {
-        fetch(`https://frozen-dawn-59766.herokuapp.com/students/${id}`, { method: 'DELETE' })
+        fetch(`http://localhost:4000/students/${id}`, { method: 'DELETE' })
             .then(res => res.json())
             .then(data => {
                 if (data.affectedRows) {

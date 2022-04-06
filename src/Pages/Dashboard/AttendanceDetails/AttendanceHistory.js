@@ -7,11 +7,11 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const AttendanceHistory = () => {
     const [history, setHistory] = useState([]);
     useEffect(() => {
-        fetch('https://frozen-dawn-59766.herokuapp.com/attendance')
+        fetch('http://localhost:4000/attendance')
             .then(res => res.json())
             .then(data => setHistory(data))
     }, [])
-    //console.log(history);
+    // console.log(history);
     return (
         <div>
             <Navigation />
@@ -19,11 +19,12 @@ const AttendanceHistory = () => {
                 <Table sx={{ minWidth: 600 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
+                            <TableCell sx={{ fontWeight: 600 }} align="right">Date</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Student ID</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Student Name</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }} align="right">Teacher Name</TableCell>
                             <TableCell sx={{ fontWeight: 600 }} align="right">Teacher Email</TableCell>
+                            <TableCell sx={{ fontWeight: 600 }} align="right">Teacher Name</TableCell>
+                            <TableCell sx={{ fontWeight: 600 }} align="right">Branch</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -33,11 +34,12 @@ const AttendanceHistory = () => {
                                 key={row.sid}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
+                                <TableCell align="right">{row.date.slice(0, 10)}</TableCell>
                                 <TableCell align="right" component="th" scope="row">{row.sid}</TableCell>
                                 <TableCell align="right" component="th" scope="row">{row.sfn + ' ' + row.sln}</TableCell>
-                                <TableCell align="right">{row.branch}</TableCell>
-                                <TableCell align="right">{row.tfn + ' ' + row.tln}</TableCell>
                                 <TableCell align="right">{row.te}</TableCell>
+                                <TableCell align="right">{row.tfn + ' ' + row.tln}</TableCell>
+                                <TableCell align="right">{row.branch}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

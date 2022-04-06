@@ -7,12 +7,11 @@ import Branch from '../Branch/Branch';
 const Branches = ({ children }) => {
     const [branches, setBranches] = useState([]);
     useEffect(() => {
-        fetch('https://frozen-dawn-59766.herokuapp.com/branches')
+        fetch('http://localhost:4000/branches')
             .then(res => res.json())
             .then(data => setBranches(data))
 
     }, [])
-    //console.log(branches);
     return (
         <Container id="branches">
             <Typography variant="h4" sx={{ fontWeight: 600, my: 3, color: '#363d6b' }}>Branches</Typography>

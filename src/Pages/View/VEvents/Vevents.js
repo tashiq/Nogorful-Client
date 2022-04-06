@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 const Vevents = () => {
     const [events, setEvents] = useState([]);
     useEffect(() => {
-        fetch('https://frozen-dawn-59766.herokuapp.com/events')
+        fetch('http://localhost:4000/events')
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])

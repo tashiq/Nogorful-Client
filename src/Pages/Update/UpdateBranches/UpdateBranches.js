@@ -11,7 +11,7 @@ const UpdateBranches = () => {
     // get a student by that id.
     // //console.log(id);
     useEffect(() => {
-        fetch(`https://frozen-dawn-59766.herokuapp.com/branches/${id}`)
+        fetch(`http://localhost:4000/branches/${id}`)
             .then(response => response.json())
             .then(data => setPrevInfo(data))
     }, [id]);
@@ -24,7 +24,7 @@ const UpdateBranches = () => {
         setPrevInfo(newInfo);
     }
     const handleUpdateBranchSubmit = e => {
-        axios.put(`https://frozen-dawn-59766.herokuapp.com/branches/${id}`, prevInfo)
+        axios.put(`http://localhost:4000/branches/${id}`, prevInfo)
             .then(response => {
                 if (response.data.affectedRows) {
                     alert("Update Operation Successful");

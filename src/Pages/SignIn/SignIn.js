@@ -25,7 +25,7 @@ const SignIn = () => {
             lastName: LastName,
             email: Email,
         }
-        fetch('https://frozen-dawn-59766.herokuapp.com/newuser', {
+        fetch('http://localhost:4000/newuser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

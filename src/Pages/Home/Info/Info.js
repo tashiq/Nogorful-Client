@@ -4,7 +4,7 @@ import SingleInfo from '../SingleInfo/SingleInfo';
 const Info = () => {
     const [info, setInfo] = useState([]);
     // useEffect(() => {
-    //     fetch('https://frozen-dawn-59766.herokuapp.com/info')
+    //     fetch('http://localhost:4000/info')
     //         .then(res => res.json())
     //         .then(data => setInfo(data));
 

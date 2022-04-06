@@ -51,8 +51,6 @@ function App() {
               <Route path="addstudent" element={<AddStudent />} />
               <Route path="addteacher" element={<AddTeacher />} />
               <Route path="addocod" element={<AddOCOD />} />
-              <Route path="update/student/:id" element={<UpdateStudent />} />
-              <Route path="update/teacher/:id" element={<UpdateTeacher />} />
               <Route path="update/branches/" element={<Branches>Data</Branches>} />
               <Route path="update/guest/:phone" element={<Uguest />} />
               <Route path="update/event/:name" element={<Uevent />} />
@@ -73,6 +71,8 @@ function App() {
             <Route path="/attendance" element={<Attendance />} />
             <Route path="/students/:id" element={<Student />} />
             <Route path="/teachers/:id" element={<Teacher />} />
+            <Route path="update/student/:id" element={<UpdateStudent />} />
+            <Route path="update/teacher/:id" element={<UpdateTeacher />} />
             <Route path="attendance-history" element={<AttendanceHistory />} />
           </Route>
         </Routes>

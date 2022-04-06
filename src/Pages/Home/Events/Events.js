@@ -4,7 +4,7 @@ import Event from '../Event/Event';
 const Events = () => {
     const [events, setEvents] = useState([]);
     useEffect(() => {
-        fetch('https://frozen-dawn-59766.herokuapp.com/projects')
+        fetch('http://localhost:4000/projects')
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])

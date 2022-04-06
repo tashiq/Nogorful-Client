@@ -9,13 +9,13 @@ const Uguest = () => {
     const { phone } = useParams();
     const [guest, setGuest] = useState({});
     useEffect(() => {
-        fetch(`https://frozen-dawn-59766.herokuapp.com/guest/${phone}`)
+        fetch(`http://localhost:4000/guest/${phone}`)
             .then(res => res.json())
             .then(data => setGuest(data[0]))
     }, [phone])
     //console.log(guest);
     const handleAddguest = e => {
-        axios.put(`https://frozen-dawn-59766.herokuapp.com/guest/${phone}`, guest)
+        axios.put(`http://localhost:4000/guest/${phone}`, guest)
             .then(res => {
                 if (res.data.errno) {
                     alert(res.data.sqlMessage)

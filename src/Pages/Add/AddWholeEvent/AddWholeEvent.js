@@ -15,7 +15,7 @@ const AddWholeEvent = () => {
         }
         else {
             const prevData = [...guestData, guest.phone]
-            axios.post('https://frozen-dawn-59766.herokuapp.com/guests', guest)
+            axios.post('http://localhost:4000/guests', guest)
                 .then(response => {
                     if (response.data.errno) {
                         alert(response.data.sqlMessage)
@@ -56,7 +56,7 @@ const AddWholeEvent = () => {
     }
     const handleEventSubmit = e => {
         const sent = { guests: guestData, eventData }
-        axios.post('https://frozen-dawn-59766.herokuapp.com/events', sent)
+        axios.post('http://localhost:4000/events', sent)
             .then(response => {
                 //console.log(response);
             })

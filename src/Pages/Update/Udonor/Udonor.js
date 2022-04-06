@@ -7,12 +7,12 @@ const Udonor = () => {
     const { phone } = useParams();
     const [donor, setDonor] = useState({});
     useEffect(() => {
-        fetch(`https://frozen-dawn-59766.herokuapp.com/donor/${phone}`)
+        fetch(`http://localhost:4000/donor/${phone}`)
             .then(res => res.json())
             .then(data => setDonor(data[0]))
     }, [phone])
     const handleOcodSubmit = e => {
-        axios.put(`https://frozen-dawn-59766.herokuapp.com/donor/${phone}`, donor)
+        axios.put(`http://localhost:4000/donor/${phone}`, donor)
             .then(res => {
                 if (res.data.errno) {
                     alert(res.data.sqlMessage);

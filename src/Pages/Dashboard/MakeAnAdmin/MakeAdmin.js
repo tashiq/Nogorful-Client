@@ -7,7 +7,7 @@ const MakeAdmin = () => {
     const [email, setEmail] = useState('')
     const adminSubmit = e => {
         // //console.log();
-        fetch(`https://frozen-dawn-59766.herokuapp.com/admin?email=${email}`, {
+        fetch(`http://localhost:4000/admin?email=${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
