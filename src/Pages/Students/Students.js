@@ -37,7 +37,7 @@ const Students = () => {
     return (
         <>
             <Navigation />
-            <div className='d-flex justify-content-center'>
+            <div className='d-flex flex-column' style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <TableContainer component={Paper} sx={{ width: 700 }} >
                     {
                         !searchBtnToggle &&
@@ -74,7 +74,12 @@ const Students = () => {
                             ))}
                         </TableBody>
                     </Table>
+                    {
+                        !students.length &&
+                        <div style={{ color: '#222', textAlign: 'center', fontSize: '45px', fontFamily: 'sans-serif' }}>No Data Found</div>
+                    }
                 </TableContainer>
+
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Link to={`/dashboard/addstudent`} style={{ textDecoration: 'none' }}>

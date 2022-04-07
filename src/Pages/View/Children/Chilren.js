@@ -87,7 +87,12 @@ const Chilren = () => {
                         ))}
                     </TableBody>
                 </Table>
+                {
+                    !children.length &&
+                    <div style={{ color: '#222', textAlign: 'center', fontSize: '45px', fontFamily: 'sans-serif' }}>No Data Found</div>
+                }
             </TableContainer>
+
         </div>
     );
 };
